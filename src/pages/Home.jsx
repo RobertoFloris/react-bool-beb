@@ -1,5 +1,6 @@
 import { useGlobalContext } from "../context/GlobalContext"
 import { useEffect } from "react"
+import CardHome from "../components/CardHome"
 
 const Home = () => {
   const { fetchBnB, bnb } = useGlobalContext()
@@ -8,9 +9,9 @@ const Home = () => {
 
   return (
     <div>
-      <ul>
-        <li></li>
-      </ul>
+      {bnb.map(item => (
+        <CardHome key={item.id} bnb={item} />
+      ))}
     </div>
   )
 }
