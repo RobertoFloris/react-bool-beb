@@ -20,7 +20,7 @@ const CardHome = ({ bnb }) => {
           console.error("Errore nell'aggiornamento dei like");
         }
       })
-      .catch((errror) => {
+      .catch((error) => {
         console.error("Errore", error);
       });
   };
