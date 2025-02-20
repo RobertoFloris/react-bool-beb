@@ -8,6 +8,7 @@ const GlobalProvider = ({ children }) => {
   const api_url = import.meta.env.VITE_API_URL;
 
   const [bnb, setBnb] = useState([]);
+  const [bnbId, setBnbId] = useState({});
 
   const fetchBnB = () => {
     axios.get(api_url)
@@ -15,12 +16,21 @@ const GlobalProvider = ({ children }) => {
         setBnb(res.data);
       })
       .catch(err => console.log(err))
+  }
 
+  const fetchBnBId = (id) => {
+    axios.get(`${api_url}/${id}`)
+      .then(res => {
+        setBnbId(res.data);
+      })
+      .catch(err => console.log(err))
   }
 
   const value = {
     fetchBnB,
-    bnb
+    bnb,
+    fetchBnBId,
+    bnbId
   }
 
   return (
