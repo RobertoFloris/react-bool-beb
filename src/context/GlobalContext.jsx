@@ -26,11 +26,21 @@ const GlobalProvider = ({ children }) => {
       .catch(err => console.log(err))
   }
 
+  const fetchLikes = (id) => {
+    axios.patch(`${api_url}/${id}`)
+      .then(res => {
+        console.log(res.data);
+        fetchBnB()
+      })
+      .catch(err => console.log(err))
+  }
+
   const value = {
     fetchBnB,
     bnb,
     fetchBnBId,
-    bnbId
+    bnbId,
+    fetchLikes
   }
 
   return (
