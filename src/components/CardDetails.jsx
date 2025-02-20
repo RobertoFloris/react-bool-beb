@@ -18,14 +18,14 @@ const CardDetails = ({ bnbId }) => {
       <p>reviews:</p>
       <hr />
 
-      {reviews.map(review => (
-        <>
+      {reviews?.map(review => (
+        <div key={review.id}>
           <p>Name: {review.name}</p>
           <p>surname: {review.surname}</p>
           <p>vote: {review.vote}</p>
           <p>text: {review.text}</p>
           <hr />
-        </>
+        </div>
       ))}
 
     </div>
