@@ -4,10 +4,10 @@ import Header from "../components/Header";
 const DefaultLayout = () => {
   return (
     <>
-    <Header/>
-    <div>
-      <Outlet/>
-    </div>
+      <Header />
+      <div className="py-30">
+        <Outlet />
+      </div>
     </>
   )
 }
