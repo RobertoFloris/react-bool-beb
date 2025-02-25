@@ -2,15 +2,24 @@ import { useState } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
 
 const Filter = () => {
-  const { fetchBnB } = useGlobalContext();
-  const [city, setCity] = useState("");
-  const [minRooms, setMinRooms] = useState("");
-  const [maxRooms, setMaxRooms] = useState("");
-  const [minBeds, setMinBeds] = useState("");
-  const [maxBeds, setMaxBeds] = useState("");
-  const [guest, setGuest] = useState("");
-  const [minRestrooms, setMinRestrooms] = useState("");
-  const [maxRestrooms, setMaxRestrooms] = useState("");
+  const { fetchBnB,
+    city,
+    setCity,
+    minRooms,
+    setMinRooms,
+    maxRooms,
+    setMaxRooms,
+    minBeds,
+    setMinBeds,
+    maxBeds,
+    setMaxBeds,
+    guest,
+    setGuest,
+    minRestrooms,
+    setMinRestrooms,
+    maxRestrooms,
+    setMaxRestrooms, } = useGlobalContext();
+
 
   const handleFilter = (e) => {
     e.preventDefault();

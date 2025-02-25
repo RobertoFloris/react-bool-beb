@@ -8,6 +8,14 @@ const GlobalProvider = ({ children }) => {
 
   const [bnb, setBnb] = useState([]);
   const [bnbId, setBnbId] = useState({});
+  const [city, setCity] = useState("");
+  const [minRooms, setMinRooms] = useState("");
+  const [maxRooms, setMaxRooms] = useState("");
+  const [minBeds, setMinBeds] = useState("");
+  const [maxBeds, setMaxBeds] = useState("");
+  const [guest, setGuest] = useState("");
+  const [minRestrooms, setMinRestrooms] = useState("");
+  const [maxRestrooms, setMaxRestrooms] = useState("");
 
   const fetchBnB = (filters = {}) => {
     const params = new URLSearchParams(filters).toString();
@@ -33,7 +41,16 @@ const GlobalProvider = ({ children }) => {
       .patch(`${api_url}/${id}`)
       .then((res) => {
         console.log(res.data);
-        fetchBnB();
+        fetchBnB({
+          city,
+          minRooms,
+          maxRooms,
+          minBeds,
+          maxBeds,
+          guest,
+          minRestrooms,
+          maxRestrooms,
+        });
       })
       .catch((err) => console.log(err));
   };
@@ -44,6 +61,22 @@ const GlobalProvider = ({ children }) => {
     fetchBnBId,
     bnbId,
     fetchLikes,
+    city,
+    setCity,
+    minRooms,
+    setMinRooms,
+    maxRooms,
+    setMaxRooms,
+    minBeds,
+    setMinBeds,
+    maxBeds,
+    setMaxBeds,
+    guest,
+    setGuest,
+    minRestrooms,
+    setMinRestrooms,
+    maxRestrooms,
+    setMaxRestrooms,
   };
 
   return (
