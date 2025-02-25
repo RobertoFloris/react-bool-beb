@@ -5,7 +5,7 @@ const DefaultLayout = () => {
   return (
     <>
       <Header />
-      <div className="py-30">
+      <div className="pt-30">
         <Outlet />
       </div>
     </>

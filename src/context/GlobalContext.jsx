@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import axios from "axios";
 
 const GlobalContext = createContext();
@@ -16,16 +16,36 @@ const GlobalProvider = ({ children }) => {
   const [guest, setGuest] = useState("");
   const [minRestrooms, setMinRestrooms] = useState("");
   const [maxRestrooms, setMaxRestrooms] = useState("");
+  const [totalPages, setTotalPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const fetchBnB = (filters = {}) => {
-    const params = new URLSearchParams(filters).toString();
+  const fetchBnB = (filters = {}, page = currentPage, limit = 18) => {
+    const params = new URLSearchParams({ ...filters, page, limit }).toString();
     axios
       .get(`${api_url}?${params}`)
       .then((res) => {
-        setBnb(res.data);
+        setBnb(res.data.data);
+        setTotalPages(res.data.totalPages);
       })
       .catch((err) => console.log(err));
   };
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  useEffect(() => {
+    fetchBnB({}, currentPage);
+  }, [currentPage]);
+
 
   const fetchBnBId = (id) => {
     axios
@@ -58,6 +78,11 @@ const GlobalProvider = ({ children }) => {
   const value = {
     fetchBnB,
     bnb,
+    totalPages,
+    currentPage,
+    setCurrentPage,
+    nextPage,
+    prevPage,
     fetchBnBId,
     bnbId,
     fetchLikes,

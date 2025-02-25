@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
 
 const Filter = () => {
