@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 
 const CardHome = ({ bnb }) => {
-  const { id, description, likes } = bnb;
+  const { id, description, likes, city } = bnb;
 
   const { fetchLikes } = useGlobalContext();
 
