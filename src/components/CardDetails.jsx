@@ -1,3 +1,6 @@
+import React, { useEffect, useState } from "react";
+import ReviewCard from "./ReviewCard";
+
 const CardDetails = ({ bnbId }) => {
   const {
     description,
@@ -14,6 +17,8 @@ const CardDetails = ({ bnbId }) => {
     host_phone,
     thumbnail,
   } = bnbId;
+
+  const [reviews, setReviews] = useState([]);
 
   return (
     <div className="max-w-4xl mx-auto p-4 bg-white rounded-lg shadow-lg">
@@ -56,6 +61,12 @@ const CardDetails = ({ bnbId }) => {
           <strong>Telefono:</strong> {host_phone}
         </p>
       </div>
+      <h3 className="text-xl font-bold mt-5">Recensioni</h3>
+      {reviews.length > 0 ? (
+        reviews.map((review) => <ReviewCard key={review.id} review={review} />)
+      ) : (
+        <p className="text-gray-700">Nessuna recensione disponibile</p>
+      )}
     </div>
   );
 };
