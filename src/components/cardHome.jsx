@@ -37,7 +37,11 @@ const CardHome = ({ bnb }) => {
       <div className="flex-grow p-4">
         <h3 className="font-bold">{description}</h3>
         <p className="text-gray-500">{likes} ❤️</p>
+<<<<<<< HEAD
         <p className="text-gray-500">{city}</p>
+=======
+        <p className="textt-gray-600">{city}</p>
+>>>>>>> aeae5717605bef37caaaa8cd45350a5e3bfcf05f
       </div>
       <div className="flex justify-between p-2">
         <Link
