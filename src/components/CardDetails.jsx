@@ -1,6 +1,6 @@
 
 const CardDetails = ({ bnbId }) => {
-  const { description, rooms, beds, restrooms, square_meters, address, likes, host_name, host_surname, host_phone, host_mail, reviews } = bnbId
+  const { description, rooms, beds, restrooms, square_meters, address, likes, host_name, host_surname, host_phone, host_email, reviews } = bnbId
   return (
     <div>
       <p>description: {description}</p>
@@ -13,7 +13,7 @@ const CardDetails = ({ bnbId }) => {
       <p>host_name: {host_name}</p>
       <p>host_surname: {host_surname}</p>
       <p>host_phone: {host_phone}</p>
-      <p>host_mail: {host_mail}</p>
+      <p>host_mail: {host_email}</p>
       <hr />
       <p>reviews:</p>
       <hr />
