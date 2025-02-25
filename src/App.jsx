@@ -1,9 +1,9 @@
-import Home from "./pages/Home"
-import DefaultLayout from "./layouts/DefaultLayout"
-import { GlobalProvider } from "./context/GlobalContext"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import DetailsPage from "./pages/DetailsPage"
-import AddHome from "./pages/AddHome"
+import Home from "./pages/Home";
+import DefaultLayout from "./layouts/DefaultLayout";
+import { GlobalProvider } from "./context/GlobalContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DetailsPage from "./pages/DetailsPage";
+import AddHome from "./pages/AddHome";
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
         </Routes>
       </BrowserRouter>
     </GlobalProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;
