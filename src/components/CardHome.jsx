@@ -41,7 +41,7 @@ const CardHome = ({ bnb }) => {
       </div>
       <div className="flex justify-between p-2">
         <Link
-          to="/CardDetails"
+          to={`/${id}`}
           className="bg-blue-500 text-white rounded-lg px-1 py-1"
         >
           Dettagli
