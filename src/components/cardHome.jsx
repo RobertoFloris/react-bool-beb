@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 
 const CardHome = ({ bnb }) => {
-  const { id, description, likes } = bnb;
+  const { id, description, likes, city } = bnb;
 
   const { fetchLikes } = useGlobalContext();
 
@@ -37,6 +37,7 @@ const CardHome = ({ bnb }) => {
       <div className="flex-grow p-4">
         <h3 className="font-bold">{description}</h3>
         <p className="text-gray-500">{likes} ❤️</p>
+        <p className="text-gray-700">{city}</p>
       </div>
       <div className="flex justify-between p-2">
         <Link
