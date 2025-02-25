@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(fetchBnB, []);
 
   return (
-    <div>
+    <div className="flex flex-wrap justify-center gap-4">
       {bnb.map((item) => (
         <CardHome key={item.id} bnb={item} />
       ))}
