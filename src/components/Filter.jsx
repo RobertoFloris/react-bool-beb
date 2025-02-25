@@ -5,16 +5,14 @@ const Filter = ({ deleteFilter }) => {
   const { fetchBnB } = useGlobalContext();
   const [city, setCity] = useState("");
   const [minRooms, setMinRooms] = useState("");
-  const [maxRooms, setMaxRooms] = useState("");
   const [minBeds, setMinBeds] = useState("");
-  const [maxBeds, setMaxBeds] = useState("");
   const [guest, setGuest] = useState("");
   const [minRestrooms, setMinRestrooms] = useState("");
-  const [maxRestrooms, setMaxRestrooms] = useState("");
+
 
   const handleFilter = (e) => {
     e.preventDefault();
-    fetchBnB({ city, minRooms, maxRooms, minBeds, maxBeds, guest, minRestrooms, maxRestrooms });
+    fetchBnB({ city, minRooms, minBeds, guest, minRestrooms });
   };
 
   return (
@@ -34,7 +32,7 @@ const Filter = ({ deleteFilter }) => {
             <h2 className="font-medium">Dove</h2>
             <input
               type="text"
-              placeholder="In quale città vuoi andare"
+              placeholder="In quale città vorresti andare"
               className="p-2 border rounded-lg"
               value={city}
               onChange={(e) => setCity(e.target.value)}
@@ -80,7 +78,7 @@ const Filter = ({ deleteFilter }) => {
 
           </div>
 
-          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-lg">Filtra</button>
+          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-lg">Applica</button>
         </form>
       </div>
     </div>
