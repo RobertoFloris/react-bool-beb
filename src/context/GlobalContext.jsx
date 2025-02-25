@@ -10,13 +10,15 @@ const GlobalProvider = ({ children }) => {
   const [bnb, setBnb] = useState([]);
   const [bnbId, setBnbId] = useState({});
 
-  const fetchBnB = () => {
-    axios.get(api_url)
+  const fetchBnB = (filters = {}) => {
+    const params = new URLSearchParams(filters).toString();
+    axios.get(`${api_url}?${params}`)
       .then(res => {
         setBnb(res.data);
       })
-      .catch(err => console.log(err))
-  }
+      .catch(err => console.log(err));
+  };
+
 
   const fetchBnBId = (id) => {
     axios.get(`${api_url}/${id}`)
