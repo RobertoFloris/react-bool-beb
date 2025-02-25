@@ -24,7 +24,7 @@ const CardHome = ({ bnb }) => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6"
+            className="size-8"
           >
             <path
               strokeLinecap="round"
@@ -41,7 +41,7 @@ const CardHome = ({ bnb }) => {
       <div className="flex justify-between p-2">
         <Link
           to="/CardDetails"
-          className="bg-blue-500 text-white rounded-lg px-2 py-1"
+          className="bg-blue-500 text-white rounded-lg px-1 py-1"
         >
           Dettagli
         </Link>
