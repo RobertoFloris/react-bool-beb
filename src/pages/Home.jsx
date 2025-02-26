@@ -2,7 +2,6 @@ import { useGlobalContext } from "../context/GlobalContext";
 import { useEffect } from "react";
 import CardHome from "../components/CardHome";
 import Filter from "../components/Filter";
-import { useState } from "react";
 
 const Home = () => {
   const {
@@ -13,13 +12,13 @@ const Home = () => {
     nextPage,
     prevPage,
     resetFilters,
+    isVisible,
+    setIsVisible,
+    filters
   } = useGlobalContext();
 
-  const [isVisible, setIsVisible] = useState(false);
-
-
   useEffect(() => {
-    fetchBnB();
+    fetchBnB(filters);
   }, []);
 
   return (
@@ -68,10 +67,7 @@ const Home = () => {
         </button>
       </div>
       {isVisible && (
-        <Filter
-          deleteFilter={() => setIsVisible(false)}
-          resetFilters={resetFilters}
-        />
+        <Filter />
       )}
       <div className="flex flex-wrap justify-center gap-4">
         {bnb.length > 0 ? (

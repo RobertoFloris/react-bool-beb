@@ -12,7 +12,7 @@ const CardHome = ({ bnb }) => {
   };
 
   return (
-    <div className="flex flex-col w-64 m-2 rounded-lg overflow-hidden shadow-lg relative">
+    <div className="flex flex-col w-64 m-2 rounded-lg overflow-hidden shadow-lg relative bg-stone-50">
       <img src={thumbnail} className="w-full h-48 object-cover" />
       <div className="absolute top-2 right-2">
         <button

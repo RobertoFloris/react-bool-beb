@@ -15,15 +15,18 @@ const GlobalProvider = ({ children }) => {
   const [minRestrooms, setMinRestrooms] = useState("");
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isVisible, setIsVisible] = useState(false);
+  const [filters, setFilters] = useState({})
+
 
   const fetchBnB = (filters = {}, page = currentPage, limit = 18) => {
+    setFilters(filters);
     const params = new URLSearchParams({ ...filters, page, limit }).toString();
     axios
       .get(`${api_url}?${params}`)
       .then((res) => {
         setBnb(res.data.data);
         setTotalPages(res.data.totalPages);
-        console.log(bnb);
 
       })
       .catch((err) => console.log(err));
@@ -78,10 +81,25 @@ const GlobalProvider = ({ children }) => {
     setMinBeds("");
     setGuest("");
     setMinRestrooms("");
-    console.log(city);
 
     fetchBnB();
   };
+
+
+  const handleFilter = (e) => {
+    e.preventDefault();
+    fetchBnB(
+      {
+        city,
+        minRooms,
+        guest,
+        minRestrooms,
+        minBeds,
+      },
+    );
+    setIsVisible(false)
+  }
+
 
   const value = {
     fetchBnB,
@@ -104,14 +122,18 @@ const GlobalProvider = ({ children }) => {
     setGuest,
     minRestrooms,
     setMinRestrooms,
-    resetFilters
+    resetFilters,
+    handleFilter,
+    isVisible,
+    setIsVisible,
+    filters
   };
 
   return (
     <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
   );
-};
 
+};
 const useGlobalContext = () => {
   return useContext(GlobalContext);
 };

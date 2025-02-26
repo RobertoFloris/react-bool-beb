@@ -14,22 +14,10 @@ const Filter = ({ deleteFilter }) => {
     setGuest,
     minRestrooms,
     setMinRestrooms,
-    bnb
+    handleFilter
   } = useGlobalContext();
 
-  const handleFilter = (e) => {
-    e.preventDefault();
-    fetchBnB(
-      {
-        city,
-        minRooms,
-        guest,
-        minRestrooms,
-        minBeds,
-      },
-    );
-    deleteFilter();
-  };
+
 
   return (
     <div className="fixed top-5 inset-0 bg-stone-400/40 flex items-center justify-center z-1 mt-10">
