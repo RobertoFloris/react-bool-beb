@@ -8,17 +8,14 @@ const Filter = ({ deleteFilter }) => {
     minRooms,
     setMinRooms,
     maxRooms,
-    setMaxRooms,
     minBeds,
     setMinBeds,
     maxBeds,
-    setMaxBeds,
     guest,
     setGuest,
     minRestrooms,
     setMinRestrooms,
     maxRestrooms,
-    setMaxRestrooms,
   } = useGlobalContext();
 
   const handleFilter = (e) => {

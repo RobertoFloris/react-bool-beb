@@ -64,12 +64,9 @@ const GlobalProvider = ({ children }) => {
         fetchBnB({
           city,
           minRooms,
-          maxRooms,
           minBeds,
-          maxBeds,
           guest,
           minRestrooms,
-          maxRestrooms,
         });
       })
       .catch((err) => console.log(err));
