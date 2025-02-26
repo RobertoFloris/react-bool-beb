@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
+import StarRating from "./StarRating";
 
 const CardHome = ({ bnb }) => {
-  const { id, description, likes, city, thumbnail } = bnb;
+  const { id, description, likes, city, thumbnail, avg_vote } = bnb;
 
   const { fetchLikes } = useGlobalContext();
 
@@ -39,6 +40,7 @@ const CardHome = ({ bnb }) => {
         <p className="text-gray-500">{likes} ❤️</p>
         <p className="text-gray-500">{city}</p>
       </Link>
+      <StarRating rating={avg_vote} />
       {/* <div className="flex justify-between p-2">
         <Link
           to={`/${id}`}
