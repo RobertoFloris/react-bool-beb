@@ -1,4 +1,5 @@
 import { useGlobalContext } from "../context/GlobalContext";
+import Counter from "./Counter";
 
 const Filter = () => {
   const {

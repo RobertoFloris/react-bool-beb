@@ -1,7 +1,12 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import ReviewCard from "./ReviewCard";
 
 const CardDetails = ({ bnbId }) => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const {
     description,
     beds,
