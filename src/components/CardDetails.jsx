@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ReviewCard from "./ReviewCard";
 
 const CardDetails = ({ bnbId }) => {
@@ -16,9 +16,8 @@ const CardDetails = ({ bnbId }) => {
     host_email,
     host_phone,
     thumbnail,
+    reviews
   } = bnbId;
-
-  const [reviews, setReviews] = useState([]);
 
   return (
     <div className="max-w-4xl mx-auto p-4 bg-white rounded-lg shadow-lg">
@@ -62,7 +61,7 @@ const CardDetails = ({ bnbId }) => {
         </p>
       </div>
       <h3 className="text-xl font-bold mt-5">Recensioni</h3>
-      {reviews.length > 0 ? (
+      {reviews?.length > 0 ? (
         reviews.map((review) => <ReviewCard key={review.id} review={review} />)
       ) : (
         <p className="text-gray-700">Nessuna recensione disponibile</p>
