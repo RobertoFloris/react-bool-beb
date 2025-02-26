@@ -84,9 +84,13 @@ const Home = () => {
         />
       )}
       <div className="flex flex-wrap justify-center gap-4">
-        {bnb.map((item) => (
-          <CardHome key={item.id} bnb={item} />
-        ))}
+        {bnb.length > 0 ? (
+          bnb.map((item) => <CardHome key={item.id} bnb={item} />)
+        ) : (
+          <h2 className="font-bold">
+            Oops! Nessuna casa soddisfa le tue richieste!
+          </h2>
+        )}
       </div>
       <div className="flex justify-center items-center mt-20 my-2 gap-4">
         <button
