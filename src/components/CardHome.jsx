@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 
 const CardHome = ({ bnb }) => {
-  const { id, description, likes, city } = bnb;
+  const { id, description, likes, city, thumbnail } = bnb;
 
   const { fetchLikes } = useGlobalContext();
 
@@ -12,7 +12,7 @@ const CardHome = ({ bnb }) => {
 
   return (
     <div className="flex flex-col w-64 m-2 rounded-lg overflow-hidden shadow-lg relative">
-      <img className="w-full h-48 object-cover" />
+      <img src={thumbnail} className="w-full h-48 object-cover" />
       <div className="absolute top-2 right-2">
         <button
           className="text-red-500 hover:text-red-700 bg-white p-2 rounded-full"
