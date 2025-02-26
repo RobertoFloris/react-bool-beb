@@ -27,9 +27,9 @@ const CardDetails = ({ bnbId }) => {
   } = bnbId;
 
   return (
-    <div className="relative cursor-pointer">
+    <div className="relative">
       <button
-        className="absolute top-4 left-4 bg-blue-400 text-white px-4 py-2 rounded"
+        className="absolute top-4 left-4 bg-blue-400 text-white px-4 py-2 rounded cursor-pointer"
         onClick={() => navigate("/")}
       >
         Torna alla Home
