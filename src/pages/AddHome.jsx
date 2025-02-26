@@ -102,6 +102,7 @@ const propertyForm = () => {
           name="bedrooms"
           className="w-full p-2 border rounded"
           onChange={handleChange}
+          min="0"
         />
       </div>
       {/* Letti */}
@@ -112,6 +113,7 @@ const propertyForm = () => {
           name="beds"
           className="w-full p-2 border rounded"
           onChange={handleChange}
+          min="0"
         />
       </div>
 
@@ -123,6 +125,7 @@ const propertyForm = () => {
           name="bathrooms"
           className="w-full p-2 border rounded"
           onChange={handleChange}
+          min="0"
         />
       </div>
 
