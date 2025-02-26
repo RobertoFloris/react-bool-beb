@@ -22,6 +22,7 @@ const Filter = ({ deleteFilter, resetFilters }) => {
       minRooms,
       guest,
       minRestrooms,
+      minBeds,
     });
     deleteFilter();
   };
