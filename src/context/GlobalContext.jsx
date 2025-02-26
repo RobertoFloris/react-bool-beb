@@ -98,7 +98,6 @@ const GlobalProvider = ({ children }) => {
     setMinRestrooms,
     maxRestrooms,
     setMaxRestrooms,
-    handleFilter,
   };
 
   return (
