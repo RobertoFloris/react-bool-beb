@@ -26,8 +26,7 @@ const ReviewCard = ({ review }) => {
         <strong>Stay Duration:</strong> {stay_duration} days
       </p>
       <p className="text-gray-700 mb-2">
-        <strong>Review Date:</strong>{" "}
-        {new Date(review_date).toLocaleDateString()}
+        <strong>Review Date:</strong> {review_date}
       </p>
       <p className="text-gray-700">{text}</p>
     </div>
