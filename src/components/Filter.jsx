@@ -23,6 +23,7 @@ const Filter = ({ deleteFilter, resetFilters }) => {
       guest,
       minRestrooms,
     });
+    deleteFilter();
   };
 
   return (
@@ -47,7 +48,10 @@ const Filter = ({ deleteFilter, resetFilters }) => {
             </svg>
           </button>
         </div>
-        <form className="flex flex-col gap-4 overflow-auto p-5" onSubmit={handleFilter}>
+        <form
+          className="flex flex-col gap-4 overflow-auto p-5"
+          onSubmit={handleFilter}
+        >
           <div className="border-b border-gray-900/10 pb-3">
             <h2 className="font-medium mb-2">Dove</h2>
             <input
@@ -67,12 +71,12 @@ const Filter = ({ deleteFilter, resetFilters }) => {
               className="p-2 border rounded-lg w-[100%]"
               value={guest}
               onChange={(e) => setGuest(e.target.value)}
+              min="0"
             />
           </div>
           <div className="flex flex-col gap-4 border-b border-gray-900/10 pb-3">
             <h2 className="font-medium">Stanze e letti</h2>
             <div className="flex justify-between">
-
               <p className="content-center">Camere</p>
               <input
                 type="number"
@@ -80,6 +84,7 @@ const Filter = ({ deleteFilter, resetFilters }) => {
                 className="p-2 border rounded-lg w-30"
                 value={minRooms}
                 onChange={(e) => setMinRooms(e.target.value)}
+                min="0"
               />
             </div>
             <div className="flex justify-between">
@@ -90,8 +95,8 @@ const Filter = ({ deleteFilter, resetFilters }) => {
                 className="p-2 border rounded-lg w-30"
                 value={minBeds}
                 onChange={(e) => setMinBeds(e.target.value)}
+                min="0"
               />
-
             </div>
             <div className="flex justify-between">
               <p className="content-center">Bagni</p>
@@ -101,13 +106,17 @@ const Filter = ({ deleteFilter, resetFilters }) => {
                 className="p-2 border rounded-lg w-30"
                 value={minRestrooms}
                 onChange={(e) => setMinRestrooms(e.target.value)}
+                number="0"
               />
-
             </div>
-
           </div>
 
-          <button type="submit" className="bg-stone-500 text-white px-4 py-2 rounded-lg">Applica</button>
+          <button
+            type="submit"
+            className="bg-stone-500 text-white px-4 py-2 rounded-lg"
+          >
+            Applica
+          </button>
         </form>
       </div>
     </div>
