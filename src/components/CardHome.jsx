@@ -34,19 +34,19 @@ const CardHome = ({ bnb }) => {
           </svg>
         </button>
       </div>
-      <div className="flex-grow p-4">
+      <Link to={`/${id}`} className="flex-grow p-4">
         <h3 className="font-bold">{description}</h3>
         <p className="text-gray-500">{likes} ❤️</p>
         <p className="text-gray-500">{city}</p>
-      </div>
-      <div className="flex justify-between p-2">
+      </Link>
+      {/* <div className="flex justify-between p-2">
         <Link
           to={`/${id}`}
           className="bg-blue-500 text-white rounded-lg px-1 py-1"
         >
           Dettagli
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 };
