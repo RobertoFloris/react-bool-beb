@@ -1,7 +1,7 @@
 import { useGlobalContext } from "../context/GlobalContext";
 import Counter from "./Counter";
 
-const Filter = () => {
+const Filter = ({ deleteFilter }) => {
   const { fetchBnB,
     city,
     setCity,
@@ -62,7 +62,7 @@ const Filter = () => {
               onChange={(e) => setGuest(e.target.value)}
             />
           </div>
-
+          <Counter />
           <div className="flex flex-col gap-4 border-b border-gray-900/10 pb-3">
             <h2 className="font-medium">Stanze e letti</h2>
             <input
