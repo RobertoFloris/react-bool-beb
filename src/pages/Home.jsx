@@ -36,7 +36,7 @@ const Home = () => {
     <>
       <div className="flex fixed z-1 ">
         <button
-          className="p-2 flex border border-stone-400 rounded-xl bg-neutral-50 me-3"
+          className="p-2 flex border border-stone-400 rounded-xl bg-neutral-50 me-3 cursor-pointer"
           onClick={() => setIsVisible(!isVisible)}
         >
           <svg
@@ -57,7 +57,7 @@ const Home = () => {
         </button>
 
         <button
-          className="flex p-2 border border-stone-400 rounded-xl bg-neutral-50"
+          className="flex p-2 border border-stone-400 rounded-xl bg-neutral-50 cursor-pointer"
           onClick={resetFilters}
         >
           <svg

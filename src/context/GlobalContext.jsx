@@ -46,7 +46,6 @@ const GlobalProvider = ({ children }) => {
     fetchBnB({}, currentPage);
   }, [currentPage]);
 
-
   const fetchBnBId = (id) => {
     axios
       .get(`${api_url}/${id}`)
@@ -99,6 +98,7 @@ const GlobalProvider = ({ children }) => {
     setMinRestrooms,
     maxRestrooms,
     setMaxRestrooms,
+    handleFilter,
   };
 
   return (
