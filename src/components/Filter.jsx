@@ -1,6 +1,7 @@
 import { useGlobalContext } from "../context/GlobalContext";
+import { useEffect } from "react";
 
-const Filter = ({ deleteFilter, resetFilters }) => {
+const Filter = ({ deleteFilter }) => {
   const {
     fetchBnB,
     city,
@@ -13,17 +14,20 @@ const Filter = ({ deleteFilter, resetFilters }) => {
     setGuest,
     minRestrooms,
     setMinRestrooms,
+    bnb
   } = useGlobalContext();
 
   const handleFilter = (e) => {
     e.preventDefault();
-    fetchBnB({
-      city,
-      minRooms,
-      guest,
-      minRestrooms,
-      minBeds,
-    });
+    fetchBnB(
+      {
+        city,
+        minRooms,
+        guest,
+        minRestrooms,
+        minBeds,
+      },
+    );
     deleteFilter();
   };
 

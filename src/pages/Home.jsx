@@ -12,25 +12,15 @@ const Home = () => {
     totalPages,
     nextPage,
     prevPage,
-    setCity,
-    setMinRooms,
-    setMinBeds,
-    setGuest,
-    setMinRestrooms,
+    resetFilters,
   } = useGlobalContext();
 
   const [isVisible, setIsVisible] = useState(false);
-  const resetFilters = () => {
-    fetchBnB();
-    // Resetto tutti i filtri
-    setCity("");
-    setMinRooms();
-    setMinBeds();
-    setGuest();
-    setMinRestrooms();
-  };
 
-  useEffect(fetchBnB, []);
+
+  useEffect(() => {
+    fetchBnB();
+  }, []);
 
   return (
     <>

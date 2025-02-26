@@ -10,12 +10,9 @@ const GlobalProvider = ({ children }) => {
   const [bnbId, setBnbId] = useState({});
   const [city, setCity] = useState("");
   const [minRooms, setMinRooms] = useState("");
-  const [maxRooms, setMaxRooms] = useState("");
   const [minBeds, setMinBeds] = useState("");
-  const [maxBeds, setMaxBeds] = useState("");
   const [guest, setGuest] = useState("");
   const [minRestrooms, setMinRestrooms] = useState("");
-  const [maxRestrooms, setMaxRestrooms] = useState("");
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -26,8 +23,11 @@ const GlobalProvider = ({ children }) => {
       .then((res) => {
         setBnb(res.data.data);
         setTotalPages(res.data.totalPages);
+        console.log(bnb);
+
       })
       .catch((err) => console.log(err));
+
   };
 
   const nextPage = () => {
@@ -71,6 +71,18 @@ const GlobalProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
+  const resetFilters = () => {
+    // Resetto tutti i filtri
+    setCity("");
+    setMinRooms("");
+    setMinBeds("");
+    setGuest("");
+    setMinRestrooms("");
+    console.log(city);
+
+    fetchBnB();
+  };
+
   const value = {
     fetchBnB,
     bnb,
@@ -86,18 +98,13 @@ const GlobalProvider = ({ children }) => {
     setCity,
     minRooms,
     setMinRooms,
-    maxRooms,
-    setMaxRooms,
     minBeds,
     setMinBeds,
-    maxBeds,
-    setMaxBeds,
     guest,
     setGuest,
     minRestrooms,
     setMinRestrooms,
-    maxRestrooms,
-    setMaxRestrooms,
+    resetFilters
   };
 
   return (
