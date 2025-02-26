@@ -24,7 +24,7 @@ const ReviewCard = ({ review }) => {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-6 h-6 text-yellow-500 ml-1"
+          className="w-5 h-6 text-yellow-500 ml-1"
         >
           <path
             strokeLinecap="round"
