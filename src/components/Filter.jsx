@@ -2,20 +2,18 @@ import { useGlobalContext } from "../context/GlobalContext";
 import Counter from "./Counter";
 
 const Filter = ({ deleteFilter }) => {
-  const { fetchBnB,
+  const {
+    fetchBnB,
     city,
     setCity,
     minRooms,
     setMinRooms,
-    maxRooms,
     minBeds,
     setMinBeds,
-    maxBeds,
     guest,
     setGuest,
     minRestrooms,
     setMinRestrooms,
-    maxRestrooms,
   } = useGlobalContext();
 
   const handleFilter = (e) => {
@@ -23,12 +21,8 @@ const Filter = ({ deleteFilter }) => {
     fetchBnB({
       city,
       minRooms,
-      maxRooms,
-      minBeds,
-      maxBeds,
       guest,
       minRestrooms,
-      maxRestrooms,
     });
   };
 
@@ -38,10 +32,20 @@ const Filter = ({ deleteFilter }) => {
         <div className="">
           <h3 className="text-center">Filtri</h3>
           <button onClick={deleteFilter} className="absolute end-5 top-5">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
             </svg>
-
           </button>
         </div>
         <form className="flex flex-col gap-4" onSubmit={handleFilter}>
@@ -54,8 +58,6 @@ const Filter = ({ deleteFilter }) => {
               value={city}
               onChange={(e) => setCity(e.target.value)}
             />
-
-
           </div>
 
           <div className="border-b border-gray-900/10 pb-3">
@@ -94,10 +96,14 @@ const Filter = ({ deleteFilter }) => {
               value={minRestrooms}
               onChange={(e) => setMinRestrooms(e.target.value)}
             />
-
           </div>
 
-          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-lg">Applica</button>
+          <button
+            type="submit"
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+          >
+            Applica
+          </button>
         </form>
       </div>
     </div>
