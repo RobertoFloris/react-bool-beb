@@ -18,12 +18,21 @@ const Filter = ({ deleteFilter }) => {
     minRestrooms,
     setMinRestrooms,
     maxRestrooms,
-    setMaxRestrooms, } = useGlobalContext();
-
+    setMaxRestrooms,
+  } = useGlobalContext();
 
   const handleFilter = (e) => {
     e.preventDefault();
-    fetchBnB({ city, minRooms, minBeds, guest, minRestrooms });
+    fetchBnB({
+      city,
+      minRooms,
+      maxRooms,
+      minBeds,
+      maxBeds,
+      guest,
+      minRestrooms,
+      maxRestrooms,
+    });
   };
 
   return (
