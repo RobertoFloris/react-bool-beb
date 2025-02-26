@@ -24,13 +24,10 @@ const Home = () => {
     fetchBnB();
     // Resetto tutti i filtri
     setCity("");
-    setMinRooms("");
-    setMaxRooms("");
-    setMinBeds("");
-    setMaxBeds("");
-    setGuest("");
-    setMinRestrooms("");
-    setMaxRestrooms("");
+    setMinRooms();
+    setMinBeds();
+    setGuest();
+    setMinRestrooms();
   };
 
   useEffect(fetchBnB, []);

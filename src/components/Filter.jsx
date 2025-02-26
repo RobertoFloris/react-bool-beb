@@ -107,7 +107,7 @@ const Filter = ({ deleteFilter, resetFilters }) => {
                 className="p-2 border rounded-lg w-30"
                 value={minRestrooms}
                 onChange={(e) => setMinRestrooms(e.target.value)}
-                number="0"
+                min="0"
               />
             </div>
           </div>
