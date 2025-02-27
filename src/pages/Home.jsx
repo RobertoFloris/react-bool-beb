@@ -70,6 +70,16 @@ const Home = () => {
       <div className="flex justify-end my-2">
         <p> Risultati della ricerca: {countRecords}</p>
       </div>
+
+      <div className="flex flex-wrap gap-4">
+        {filters.city && <p className="my-10"><strong>Città:</strong> {filters.city}</p>}
+        {filters.guest && <p className="my-10"><strong>Ospiti:</strong> {filters.guest}</p>}
+        {filters.minRooms && <p className="my-10"><strong>Camere:</strong> {filters.minRooms}</p>}
+        {filters.minBeds && <p className="my-10"><strong>Letti:</strong> {filters.minBeds}</p>}
+        {filters.minRestrooms && <p className="my-10"><strong>Bagni:</strong> {filters.minRestrooms}</p>}
+      </div>
+
+
       {isVisible && (
         <Filter />
       )}
