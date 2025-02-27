@@ -2,7 +2,6 @@ import { useGlobalContext } from "../context/GlobalContext";
 
 const Filter = () => {
   const {
-    fetchBnB,
     city,
     setCity,
     minRooms,
@@ -14,17 +13,18 @@ const Filter = () => {
     minRestrooms,
     setMinRestrooms,
     handleFilter,
-    setIsVisible
+    setIsVisible,
   } = useGlobalContext();
-
-
 
   return (
     <div className="fixed top-5 inset-0 bg-stone-400/40 flex items-center justify-center z-1 mt-10">
       <div className="w-lg max-h-[90%] flex flex-col gap-4 bg-gray-100  rounded-lg shadow-md top-5 relative">
         <div className="">
           <h3 className="text-center font-bold p-5">Filtri</h3>
-          <button className="absolute end-5 top-5" onClick={() => setIsVisible(false)}>
+          <button
+            className="absolute end-5 top-5"
+            onClick={() => setIsVisible(false)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
