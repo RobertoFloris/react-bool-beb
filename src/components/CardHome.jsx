@@ -4,7 +4,7 @@ import StarRating from "./StarRating";
 import { useState } from "react";
 
 const CardHome = ({ bnb }) => {
-  const { id, description, likes, city, thumbnail, avg_vote } = bnb;
+  const { id, guest_number, beds, restrooms, rooms, description, likes, city, thumbnail, avg_vote } = bnb;
   const { fetchLikes } = useGlobalContext();
   const [animate, setAnimate] = useState(false);
 
@@ -19,9 +19,8 @@ const CardHome = ({ bnb }) => {
       <img src={thumbnail} className="w-full h-48 object-cover" />
       <div className="absolute top-2 right-2">
         <button
-          className={`text-red-500 hover:text-red-700 bg-white p-2 rounded-full transition-transform duration-500 ease-in-out ${
-            animate ? "transform scale-110 bg-red-200" : ""
-          }`}
+          className={`text-red-500 hover:text-red-700 bg-white p-2 rounded-full transition-transform duration-500 ease-in-out ${animate ? "transform scale-110 bg-red-200" : ""
+            }`}
           onClick={likeHandler}
         >
           <svg
@@ -40,9 +39,9 @@ const CardHome = ({ bnb }) => {
           </svg>
         </button>
       </div>
-      <Link to={`/${id}`} className="flex-grow p-4 pb-0">
+      <Link to={`/${id}`} className="flex-grow px-3 pt-3">
         <h3 className="font-bold">{description}</h3>
-        <p className="text-gray-500 flex">
+        <p className="text-gray-500 flex my-2">
           {likes}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -53,10 +52,34 @@ const CardHome = ({ bnb }) => {
             <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
           </svg>
         </p>
-        <p className="text-gray-500">{city}</p>
+
+        <div className="border-t border-gray-900/10 py-2">
+
+          <div className="flex py-1">
+            <p><i class="fa-solid fa-location-dot me-2"></i></p>
+            <p className="">{city}</p>
+          </div>
+          <div className="flex py-1">
+            <p><i class="fa-solid fa-users me-2"></i></p>
+            <p className="">{guest_number} ospiti</p>
+          </div>
+          <div className="flex py-1">
+            <p><i class="fa-solid fa-bed me-2"></i></p>
+            <p className="">{rooms} stanze - {beds} letti</p>
+          </div>
+          <div className="flex py-1">
+            <p><i class="fa-solid fa-shower me-2"></i></p>
+            <p className="">{restrooms} bagni</p>
+          </div>
+
+        </div>
+
+
+
+
       </Link>
 
-      <div className="p-4">
+      <div className="px-3 mb-5">
         <StarRating vote={avg_vote} />
       </div>
     </div>
