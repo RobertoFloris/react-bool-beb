@@ -14,7 +14,8 @@ const Home = () => {
     resetFilters,
     isVisible,
     setIsVisible,
-    filters
+    filters,
+    countRecords,
   } = useGlobalContext();
 
   useEffect(() => {
@@ -66,10 +67,13 @@ const Home = () => {
           <p className="red-200"> Resetta filtri</p>
         </button>
       </div>
+      <div className="flex justify-end my-2">
+        <p> Risultati della ricerca: {countRecords}</p>
+      </div>
       {isVisible && (
         <Filter />
       )}
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-4 my-5">
         {bnb.length > 0 ? (
           bnb.map((item) => <CardHome key={item.id} bnb={item} />)
         ) : (

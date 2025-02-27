@@ -17,16 +17,18 @@ const GlobalProvider = ({ children }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isVisible, setIsVisible] = useState(false);
   const [filters, setFilters] = useState({})
+  const [countRecords, setCountRecords] = useState("")
 
 
-  const fetchBnB = (filters = {}, page = currentPage, limit = 18) => {
+  const fetchBnB = (filters = {}, page = currentPage) => {
     setFilters(filters);
-    const params = new URLSearchParams({ ...filters, page, limit }).toString();
+    const params = new URLSearchParams({ ...filters, page }).toString();
     axios
       .get(`${api_url}?${params}`)
       .then((res) => {
         setBnb(res.data.data);
         setTotalPages(res.data.totalPages);
+        setCountRecords(res.data.totalItems);
 
       })
       .catch((err) => console.log(err));
@@ -126,7 +128,8 @@ const GlobalProvider = ({ children }) => {
     handleFilter,
     isVisible,
     setIsVisible,
-    filters
+    filters,
+    countRecords
   };
 
   return (
