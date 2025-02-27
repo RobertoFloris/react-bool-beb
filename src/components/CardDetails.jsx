@@ -1,11 +1,8 @@
 import { useEffect } from "react";
 import ReviewCard from "./ReviewCard";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const CardDetails = ({ bnbId }) => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
