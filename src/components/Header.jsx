@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className=" h-25 z-2 flex justify-between items-center px-4 text-neutral-50 bg-stone-700 fixed top-0 right-0 left-0">
+    <header className=" h-25 z-2 flex justify-between items-center px-4 text-neutral-50 bg-stone-700 ">
       <Link to="/">
         <img src="./img/logo_b&b.png" className="h-25" alt="" />
       </Link>
