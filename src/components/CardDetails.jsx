@@ -28,7 +28,7 @@ const CardDetails = ({ bnbId }) => {
   return (
     <div className="relative">
       <Link
-        className="absolute top-4 left-4 bg-stone-400 text-white px-4 py-2 rounded cursor-pointer z-10"
+        className="fixed top-30 left-4 bg-stone-400 text-white px-4 py-2 rounded cursor-pointer z-10"
         to={-1}
         onClick={handleFilter}
       >
