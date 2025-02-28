@@ -118,6 +118,15 @@ const GlobalProvider = ({ children }) => {
     setIsVisible(false);
   }
 
+  const handlerNewHome = (newHome) => {
+    console.log(newHome)
+    axios.post(api_url, newHome)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => console.error("Errore nel fetch:", error));
+  };
+
 
   const value = {
     fetchBnB,
@@ -147,7 +156,8 @@ const GlobalProvider = ({ children }) => {
     filters,
     countRecords,
     fetchBestBnB,
-    bestbnb
+    bestbnb,
+    handlerNewHome
   };
 
   return (
