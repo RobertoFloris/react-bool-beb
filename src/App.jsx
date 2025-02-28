@@ -1,4 +1,4 @@
-import Home from "./pages/Home";
+import Results from "./pages/Results";
 import HomePage from "./pages/HomePage";
 import DefaultLayout from "./layouts/DefaultLayout";
 import { GlobalProvider } from "./context/GlobalContext";
@@ -13,7 +13,7 @@ const App = () => {
         <Routes>
           <Route element={<DefaultLayout />}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/results" element={<Results />} />
             <Route path="/:id" element={<DetailsPage />} />
             <Route path="/nuova-casa" element={<AddHome />} />
           </Route>

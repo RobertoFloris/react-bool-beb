@@ -23,6 +23,7 @@ const GlobalProvider = ({ children }) => {
   const fetchBnB = (filters = {}, page = currentPage) => {
     setFilters(filters);
     const params = new URLSearchParams({ ...filters, page }).toString();
+
     axios
       .get(`${api_url}?${params}`)
       .then((res) => {
@@ -99,7 +100,7 @@ const GlobalProvider = ({ children }) => {
         minBeds,
       },
     );
-    setIsVisible(false)
+    setIsVisible(false);
   }
 
 
