@@ -81,21 +81,21 @@ const HomePage = () => {
         <div class="flex flex-wrap justify-around space-x-8 py-10">
 
           <div class="w-70 h-80 bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between my-4">
-            <img src="/img/protection_2597435.png" alt="Image 1" className="h-[40%] h-32 object-cover rounded-lg mb-6 mt-2" />
+            <img src="/img/protection_2597435.png" alt="Image 1" className="h-[40%] h-32 object-cover rounded-lg mb-6 mt-2 icons" />
             <h2 class="text-2xl font-semibold text-center mb-2">Zero costi nascosti</h2>
             <p class="text-gray-600 text-center">Con noi il prezzo che vedi è quello che paghi, senza sorprese </p>
           </div>
 
 
           <div class="w-70 h-80 bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between my-4">
-            <img src="/img/smartphone_1024857.png" alt="Image 3" class="w-full h-32 object-cover rounded-lg mb-4" />
+            <img src="/img/smartphone_1024857.png" alt="Image 3" className="w-full h-32 object-cover rounded-lg mb-4 icons" />
             <h2 class="text-2xl font-semibold text-center mb-2">Conferma immediata</h2>
             <p class="text-gray-600 text-center">La prenotazione è istantanea per la maggior parte dei soggiorni</p>
           </div>
 
 
           <div class="w-70 h-80 bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between my-4">
-            <img src="img/like_1702684.png" alt="Image 3" class="w-full h-32 object-cover rounded-lg mb-4" />
+            <img src="img/like_1702684.png" alt="Image 3" className="w-full h-32 object-cover rounded-lg mb-4 icons" />
             <h2 class="text-2xl font-semibold text-center mb-2">Flessibilità garantita</h2>
             <p class="text-gray-600 text-center">Le strutture proposte garantiscono la cancellazione gratuita</p>
           </div>
