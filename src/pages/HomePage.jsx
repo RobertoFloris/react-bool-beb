@@ -84,11 +84,11 @@ const HomePage = () => {
       </div>
 
       <div className="container">
-        <h2 className="text-[2rem] font-bold pt-20 pb-8 text-center">
+        <h2 className="text-[2rem] font-bold pt-15 pb-6 text-center">
           Con noi prenotare è facile e sicuro
         </h2>
 
-        <div className="flex flex-wrap justify-around space-x-8 py-10">
+        <div className="flex flex-wrap justify-around pb-10">
           <div className="w-70 h-80 bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between my-4">
             <img
               src="/img/protection_2597435.png"
