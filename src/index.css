@@ -1,2 +1,10 @@
-@import 'tailwindcss'
+.container {
+  margin: auto;
+  padding: 20px 5px;
+}
 
+img {
+  object-fit: contain;
+}
+
+@import 'tailwindcss'

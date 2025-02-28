@@ -6,6 +6,8 @@ const GlobalContext = createContext();
 const GlobalProvider = ({ children }) => {
   const api_url = import.meta.env.VITE_API_URL;
 
+
+  const [bestbnb, setBestbnb] = useState([])
   const [bnb, setBnb] = useState([]);
   const [bnbId, setBnbId] = useState({});
   const [city, setCity] = useState("");
@@ -18,6 +20,19 @@ const GlobalProvider = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [filters, setFilters] = useState({})
   const [countRecords, setCountRecords] = useState("")
+
+
+
+
+  const fetchBestBnB = () => {
+    axios.get(api_url)
+      .then((res) => {
+        setBestbnb(res.data.data.slice(0, 6));
+        // Prende solo i primi 6 risultati
+      })
+      .catch((error) => console.error("Errore nel fetch:", error));
+  };
+
 
 
   const fetchBnB = (filters = {}, page = currentPage) => {
@@ -130,7 +145,9 @@ const GlobalProvider = ({ children }) => {
     isVisible,
     setIsVisible,
     filters,
-    countRecords
+    countRecords,
+    fetchBestBnB,
+    bestbnb
   };
 
   return (
