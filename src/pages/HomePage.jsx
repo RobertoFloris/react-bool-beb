@@ -76,7 +76,7 @@ const HomePage = () => {
       </div>
 
       <div className="container">
-        <h2 className="text-[2rem] font-bold pt-20 pb-8">Con noi prenotare è facile e sicuro</h2>
+        <h2 className="text-[2rem] font-bold pt-20 pb-8 text-center">Con noi prenotare è facile e sicuro</h2>
 
         <div class="flex flex-wrap justify-around space-x-8 py-10">
 
