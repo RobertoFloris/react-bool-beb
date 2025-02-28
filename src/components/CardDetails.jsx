@@ -28,7 +28,7 @@ const CardDetails = ({ bnbId }) => {
   return (
     <div className="relative">
       <Link
-        className="absolute top-4 left-4 bg-stone-400 text-white px-4 py-2 rounded cursor-pointer"
+        className="absolute top-4 left-4 bg-stone-400 text-white px-4 py-2 rounded cursor-pointer z-10"
         to={-1}
         onClick={handleFilter}
       >
@@ -38,7 +38,7 @@ const CardDetails = ({ bnbId }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-6 h-6 ml-2"
         >
           <path
             strokeLinecap="round"
@@ -47,47 +47,53 @@ const CardDetails = ({ bnbId }) => {
           />
         </svg>
       </Link>
-      <div className="max-w-4xl mx-auto p-4 bg-white rounded-lg shadow-lg">
+      <div className="flex justify-center items-center mt-10">
         <img
           src={thumbnail}
           alt="Thumbnail"
-          className="w-full h-64 object-cover rounded-t-lg"
+          className="w-1/2 h-auto object-cover rounded-lg"
         />
-        <div className="p-4">
+        <div className="p-4 w-1/2 h-full flex flex-col justify-between">
           <h2 className="text-2xl font-bold mb-2">{description}</h2>
-          <p className="text-gray-700 mb-2">
-            <strong>Città:</strong> {city}
-          </p>
-          <p className="text-gray-700 mb-2">
-            <strong>Indirizzo:</strong> {address}
-          </p>
-          <p className="text-gray-700 mb-2">
-            <strong>Letti:</strong> {beds}
-          </p>
-          <p className="text-gray-700 mb-2">
-            <strong>Camere:</strong> {rooms}
-          </p>
-          <p className="text-gray-700 mb-2">
-            <strong>Bagni:</strong> {restrooms}
-          </p>
-          <p className="text-gray-700 mb-2">
-            <strong>Metri Quadrati:</strong> {square_meters}
-          </p>
-          <p className="text-gray-700 mb-2">
-            <strong>Likes:</strong> {likes} ❤️
-          </p>
-          <h3 className="text-xl font-bold mt-5">Dettagli Host</h3>
-          <p className="text-gray-700 mb-2">
-            <strong>Nome Completo:</strong> {host_name} {host_surname}
-          </p>
-          <p className="text-gray-700 mb-2">
-            <strong>Email:</strong> {host_email}
-          </p>
-          <p className="text-gray-700 mb-2">
-            <strong>Telefono:</strong> {host_phone}
-          </p>
+          <div className="flex flex-col">
+            <p className="text-gray-700 mb-2">
+              <strong>Città:</strong> {city}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Indirizzo:</strong> {address}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Letti:</strong> {beds}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Camere:</strong> {rooms}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Bagni:</strong> {restrooms}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Metri Quadrati:</strong> {square_meters}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Likes:</strong> {likes} ❤️
+            </p>
+            <h3 className="text-xl font-bold mt-5">Dettagli Host</h3>
+            <div className="flex flex-col">
+              <p className="text-gray-700 mb-2">
+                <strong>Nome Completo:</strong> {host_name} {host_surname}
+              </p>
+              <p className="text-gray-700 mb-2">
+                <strong>Email:</strong> {host_email}
+              </p>
+              <p className="text-gray-700 mb-2">
+                <strong>Telefono:</strong> {host_phone}
+              </p>
+            </div>
+          </div>
         </div>
-        <h3 className="text-xl font-bold mt-5">Recensioni</h3>
+      </div>
+      <h3 className="text-xl font-bold mt-10 mb-5">Recensioni</h3>
+      <div className="flex gap-4">
         {reviews?.length > 0 ? (
           reviews.map((review) => (
             <ReviewCard key={review.id} review={review} />
