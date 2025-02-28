@@ -34,13 +34,12 @@ const HomePage = () => {
       </div>
 
       <div className="max-w-[80%] mt-[-1rem] mx-auto">
-        <form onSubmit={handleSubmit} className="flex">
+        <form onSubmit={handleSubmit} className="flex h-[3.5rem]">
           <SearchBar />
           <button
             type="submit"
             className="px-3 ms-1 bg-yellow-500 border-stone-400 rounded-xl cursor-pointer"
           >
-            {" "}
             Cerca
           </button>
         </form>

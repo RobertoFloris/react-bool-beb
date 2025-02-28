@@ -26,13 +26,12 @@ const CardHome = ({ bnb }) => {
   };
 
   return (
-    <div className="flex flex-col w-64 m-2 rounded-lg overflow-hidden shadow-lg relative bg-stone-50">
+    <div className="flex flex-col w-64 h-120 m-2 rounded-lg overflow-hidden shadow-lg relative bg-stone-50">
       <img src={thumbnail} className="w-full h-48 object-cover" />
       <div className="absolute top-2 right-2">
         <button
-          className={`text-red-500 hover:text-red-700 bg-white p-2 rounded-full transition-transform duration-500 ease-in-out ${
-            animate ? "transform scale-110 bg-red-200" : ""
-          }`}
+          className={`text-red-500 hover:text-red-700 bg-white p-2 rounded-full transition-transform duration-500 ease-in-out ${animate ? "transform scale-110 bg-red-200" : ""
+            }`}
           onClick={likeHandler}
         >
           {animate ? (
