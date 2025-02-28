@@ -12,7 +12,7 @@ const ReviewCard = ({ review }) => {
   } = review;
 
   return (
-    <div className="border rounded-lg p-4 shadow-lg mb-4">
+    <div className="border rounded-lg p-4 shadow-lg mb-4 w-1/4">
       <h4 className="font-bold text-lg">
         {name} {surname}
       </h4>

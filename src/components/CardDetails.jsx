@@ -43,7 +43,7 @@ const CardDetails = ({ bnbId }) => {
           />
         </svg>
       </Link>
-      <div className="flex justify-center items-center mt-10 m-10">
+      <div className="flex justify-center items-center mt-10 mx-20">
         <img
           src={thumbnail}
           alt="Thumbnail"
