@@ -27,18 +27,14 @@ const CardDetails = ({ bnbId }) => {
 
   return (
     <div className="relative">
-      <Link
-        className="fixed top-30 left-4 bg-stone-400 text-white px-4 py-2 rounded cursor-pointer z-10"
-        to={-1}
-        onClick={handleFilter}
-      >
+      <Link className="static top-30 left-4" to={-1} onClick={handleFilter}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 ml-2"
+          className="w-8 h-8  bg-stone-400 text-white rounded cursor-pointer"
         >
           <path
             strokeLinecap="round"
@@ -47,11 +43,11 @@ const CardDetails = ({ bnbId }) => {
           />
         </svg>
       </Link>
-      <div className="flex justify-center items-center mt-10">
+      <div className="flex justify-center items-center mt-10 m-10">
         <img
           src={thumbnail}
           alt="Thumbnail"
-          className="w-1/2 h-auto object-cover rounded-lg"
+          className="w-2/3 h-auto object-cover rounded-lg"
         />
         <div className="p-4 w-1/2 h-full flex flex-col justify-between">
           <h2 className="text-2xl font-bold mb-2">{description}</h2>
@@ -92,8 +88,8 @@ const CardDetails = ({ bnbId }) => {
           </div>
         </div>
       </div>
-      <h3 className="text-xl font-bold mt-10 mb-5">Recensioni</h3>
-      <div className="flex gap-4">
+      <h3 className="text-xl font-bold mt-10 mb-3">Recensioni:</h3>
+      <div className="flex gap-4 m-10">
         {reviews?.length > 0 ? (
           reviews.map((review) => (
             <ReviewCard key={review.id} review={review} />
