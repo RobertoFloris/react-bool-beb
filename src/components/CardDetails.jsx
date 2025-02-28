@@ -49,7 +49,7 @@ const CardDetails = ({ bnbId }) => {
           alt="Thumbnail"
           className="w-2/3 h-auto object-cover rounded-lg"
         />
-        <div className="p-4 w-1/2 h-full flex flex-col justify-between">
+        <div className="p-4 m-5 w-1/2 h-full flex flex-col justify-between">
           <h2 className="text-2xl font-bold mb-2">{description}</h2>
           <div className="flex flex-col">
             <p className="text-gray-700 mb-2">
