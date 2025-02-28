@@ -12,11 +12,11 @@ const ReviewCard = ({ review }) => {
   } = review;
 
   return (
-    <div className="border rounded-lg p-4 shadow-lg mb-4 w-1/4">
+    <div className="border rounded-lg p-4 shadow-lg mb-4 w-full md:w-1/4">
       <h4 className="font-bold text-lg">
         {name} {surname}
       </h4>
-      <div className="flex items-center text-gray-700 mb-2">
+      <div className="flex items-center text-gray-700 mb-1">
         <strong>Vote:</strong> {vote}
         <svg
           xmlns="http://www.w3.org/2000/svg"

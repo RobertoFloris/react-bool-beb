@@ -43,13 +43,13 @@ const CardDetails = ({ bnbId }) => {
           />
         </svg>
       </Link>
-      <div className="flex justify-center items-center mt-10 mx-20">
+      <div className="flex flex-col md:flex-row items-center mt-10 mx-4 md:mx-20">
         <img
           src={thumbnail}
           alt="Thumbnail"
-          className="w-2/3 h-auto object-cover rounded-lg"
+          className="w-full md:w-2/3 h-auto object-cover rounded-lg"
         />
-        <div className="p-4 m-5 w-1/2 h-full flex flex-col justify-between">
+        <div className="p-4 m-5 w-full md:w-1/3 h-full flex flex-col justify-between">
           <h2 className="text-2xl font-bold mb-2">{description}</h2>
           <div className="flex flex-col">
             <p className="text-gray-700 mb-2">
@@ -88,8 +88,8 @@ const CardDetails = ({ bnbId }) => {
           </div>
         </div>
       </div>
-      <h3 className="text-xl font-bold mt-10 mb-3">Recensioni:</h3>
-      <div className="flex gap-4 m-10">
+      <h3 className="text-xl font-bold mt-10 mb-3 mx-20">Recensioni:</h3>
+      <div className="flex flex-col gap-4 m-4 md:m-10 mx-4 md:mx-20">
         {reviews?.length > 0 ? (
           reviews.map((review) => (
             <ReviewCard key={review.id} review={review} />
