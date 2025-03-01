@@ -1,308 +1,161 @@
 import { useState } from "react";
-const propertyForm = () => {
-  const [formState, setFormState] = useState({
-    accommodationType: "",
-    guestAccess: "",
-    location: "",
-    guests: "",
-    bedrooms: "",
+import { useGlobalContext } from "../context/GlobalContext";
+
+const AddHome = () => {
+  const [newHome, setNewHome] = useState({
+    type: "",
+    accomodation_type: "",
+    city: "",
+    guest_number: "",
+    rooms: "",
     beds: "",
-    bathrooms: "",
-    services: "",
-    title: "",
+    restrooms: "",
+    square_meters: "",
+    address: "",
     description: "",
+    host_name: "",
+    host_surname: "",
+    host_email: "",
+    host_phone: "",
+    thumbnail: "",
+    wifi: false,
+    tv: false,
+    pool: false,
+    kitchen: false,
+    washing_machine: false,
+    heating: false,
+    air_conditioning: false,
+    hairdryer: false,
+    iron: false,
   });
 
+  const { handlerNewHome } = useGlobalContext();
+
+  const [thumb, setThumb] = useState("/img/no-image.jpg")
+
+
+  //se è di tipo checkbox true o false, altrimenti se è di tipo file prendo il file fisico messo in cache in cui c'è il nome altrimenti (se è numero o text) prende direttamente il valore
   const handleChange = (e) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value,
-    });
+    const { name, type, value, checked, files } = e.target;
+
+    if (type === "file" && files.length > 0) {
+      setThumb(URL.createObjectURL(files[0]));
+      setNewHome((prev) => ({
+        ...prev,
+        [name]: files[0]
+      }));
+    } else {
+      setNewHome((prev) => ({
+        ...prev,
+        [name]: type === "checkbox" ? checked : value
+      }));
+    }
   };
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Logica per gestire l'invio del modulo
+    handlerNewHome(newHome);
+
   };
 
   return (
-    <form
-      className="max-w-xl mx-auto p-8 bg-white shadow-md rounded-lg"
-      onSubmit={handleSubmit}
-    >
-      <h1 className="text-2xl font-bold mb-6">
-        Pagina di inserimento immobili
-      </h1>
+    <form className="max-w-xl mx-auto p-8 bg-white shadow-md rounded-lg" onSubmit={handleSubmit} encType="multipart/form-data">
 
-      {/* quale di queste opzioni descrive meglio il tuo alloggio */}
-      <div className="mb-4">
-        <label className="block text-gray-700 font-semibold mb-2">
-          Quale di queste opzioni descrive meglio il tuo alloggio?
-        </label>
-        <select
-          name="accommodationType"
-          className="w-full p-2 border rounded"
-          onChange={handleChange}
-        >
-          <option value="">Seleziona...</option>
-          <option value="Casa">Casa</option>
-          <option value="Appartamento">Appartamento</option>
-          <option value="Villa">Villa</option>
-        </select>
-      </div>
+      <h1 className="text-2xl font-bold mb-6">Pagina di inserimento immobili</h1>
 
-      {/* a che tipo di alloggio avranno accesso gli ospiti*/}
-      <div className="mb-4">
-        <label className="block text-gray-700 font-semibold mb-2">
-          A che tipo di alloggio avranno accesso gli ospiti?
-        </label>
-        <select
-          name="guestAccess"
-          className="w-full p-2 border rounded"
-          onChange={handleChange}
-        >
-          <option value="">Seleziona...</option>
-          <option value="Intera proprietà">Intera proprietà</option>
-          <option value="Stanza privata">Stanza privata</option>
-          <option value="Stanza condivisa">Stanza condivisa</option>
-        </select>
-      </div>
+      <label>Quale di queste opzioni descrive meglio il tuo alloggio?</label>
+      <select name="type" className="w-full p-2 border rounded" onChange={handleChange}>
+        <option value="">Seleziona...</option>
+        <option value="Casa">Casa</option>
+        <option value="Appartamento">Appartamento</option>
+        <option value="Villa">Villa</option>
+      </select>
 
-      {/* dove si trova il tuo alloggio */}
-      <div className="mb-4">
-        <label className="block text-gray-700 font-semibold mb-2">
-          Dove si trova il tuo alloggio?
-        </label>
-        <input
-          type="text"
-          name="location"
-          className="w-full p-2 border rounded"
-          onChange={handleChange}
-        />
-      </div>
+      <label>A che tipo di alloggio avranno accesso gli ospiti?</label>
+      <select name="accomodation_type" className="w-full p-2 border rounded" onChange={handleChange}>
+        <option value="">Seleziona...</option>
+        <option value="Intera proprietà">Intera proprietà</option>
+        <option value="Stanza privata">Stanza privata</option>
+        <option value="Stanza condivisa">Stanza condivisa</option>
+      </select>
 
-      {/* ospiti */}
-      <div className="mb-4">
-        <label className="block text-gray-700 font-semibold mb-2">Ospiti</label>
-        <input
-          type="number"
-          name="guests"
-          className="w-full p-2 border rounded"
-          onChange={handleChange}
-        />
-      </div>
+      <label>In quale città si trova il tuo alloggio?</label>
+      <input type="text" name="city" className="w-full p-2 border rounded" onChange={handleChange} />
 
-      {/* Camere da letto */}
-      <div className="mb-4">
-        <label className="block text-gray-700 font-semibold mb-2">
-          Camere da letto
-        </label>
-        <input
-          type="number"
-          name="bedrooms"
-          className="w-full p-2 border rounded"
-          onChange={handleChange}
-          min="0"
-        />
-      </div>
-      {/* Letti */}
-      <div className="mb-4">
-        <label className="block text-gray-700 font-semibold mb-2">Letti</label>
-        <input
-          type="number"
-          name="beds"
-          className="w-full p-2 border rounded"
-          onChange={handleChange}
-          min="0"
-        />
-      </div>
+      <label>Ospiti</label>
+      <input type="number" name="guest_number" className="w-full p-2 border rounded" onChange={handleChange} />
 
-      {/* Bagni */}
-      <div className="mb-4">
-        <label className="block text-gray-700 font-semibold mb-2">Bagni</label>
-        <input
-          type="number"
-          name="bathrooms"
-          className="w-full p-2 border rounded"
-          onChange={handleChange}
-          min="0"
-        />
-      </div>
+      <label>Camere da letto</label>
+      <input type="number" name="rooms" className="w-full p-2 border rounded" onChange={handleChange} min="0" />
 
-      {/* Servizi offerti */}
+      <label>Letti</label>
+      <input type="number" name="beds" className="w-full p-2 border rounded" onChange={handleChange} min="0" />
 
-      <h3 className="mb-4 font-semibold text-gray-900 dark:text-black">
-        Servizi offerti
-      </h3>
-      <ul className="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-white dark:border-gray-600 dark:text-black">
-        <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-          <div className="flex items-center ps-3">
-            <input
-              id="vue-checkbox"
-              type="checkbox"
-              value=""
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-            />
-            <label
-              for="vue-checkbox"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-black"
-            >
-              Wifi
-            </label>
-          </div>
-        </li>
-        <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-          <div className="flex items-center ps-3">
-            <input
-              id="react-checkbox"
-              type="checkbox"
-              value=""
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-            />
-            <label
-              for="react-checkbox"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-black"
-            >
-              Tv
-            </label>
-          </div>
-        </li>
-        <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-          <div className="flex items-center ps-3">
-            <input
-              id="angular-checkbox"
-              type="checkbox"
-              value=""
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-            />
-            <label
-              for="angular-checkbox"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-black"
-            >
-              Piscina
-            </label>
-          </div>
-        </li>
-        <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-          <div className="flex items-center ps-3">
-            <input
-              id="laravel-checkbox"
-              type="checkbox"
-              value=""
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-            />
-            <label
-              for="laravel-checkbox"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-black"
-            >
-              Cucina
-            </label>
-          </div>
-        </li>
-        <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-          <div className="flex items-center ps-3">
-            <input
-              id="laravel-checkbox"
-              type="checkbox"
-              value=""
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-            />
-            <label
-              for="laravel-checkbox"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-black"
-            >
-              Lavatrice
-            </label>
-          </div>
-        </li>
-        <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-          <div className="flex items-center ps-3">
-            <input
-              id="laravel-checkbox"
-              type="checkbox"
-              value=""
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-            />
-            <label
-              for="laravel-checkbox"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-black"
-            >
-              Riscaldamento
-            </label>
-          </div>
-        </li>
-        <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-          <div className="flex items-center ps-3">
-            <input
-              id="laravel-checkbox"
-              type="checkbox"
-              value=""
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-            />
-            <label
-              for="laravel-checkbox"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-black"
-            >
-              Aria condizionata
-            </label>
-          </div>
-        </li>
-        <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-          <div className="flex items-center ps-3">
-            <input
-              id="laravel-checkbox"
-              type="checkbox"
-              value=""
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-            />
-            <label
-              for="laravel-checkbox"
-              className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-black"
-            >
-              Asciugacapelli/ferro
-            </label>
-          </div>
-        </li>
-      </ul>
+      <label>Bagni</label>
+      <input type="number" name="restrooms" className="w-full p-2 border rounded" onChange={handleChange} min="0" />
 
-      {/* titolo annuncio descrizione */}
-      <div className="mb-4">
-        <label
-          for="message"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >
-          Your message
-        </label>
-        <textarea
-          id="message"
-          rows="4"
-          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-stone-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Leave a comment..."
-        ></textarea>
-      </div>
+      <label>Metri quadri</label>
+      <input type="number" name="square_meters" className="w-full p-2 border rounded" onChange={handleChange} min="0" />
+
+      <label>Indirizzo</label>
+      <input type="text" name="address" className="w-full p-2 border rounded" onChange={handleChange} />
+
+      <label>Immagine di copertina</label>
+      <input type="file" name="thumbnail" className="w-full p-2 border rounded" onChange={handleChange} />
+      <img src={thumb} alt="no-image" className="thumb" />
+
+      <label>Descrizione</label>
+      <textarea name="description" rows="4" className="w-full p-2 border rounded" onChange={handleChange}></textarea>
+
+      {/* serve per far si che le checkbox si creino dinamicamente e ognuna abbia il name uguale all'item e quindi alla stringa dell'array */}
+      <h3 className="mb-4 font-semibold text-gray-900">Servizi offerti</h3>
+      {[
+        "wifi",
+        "tv",
+        "pool",
+        "kitchen",
+        "washing_machine",
+        "heating",
+        "air_conditioning",
+        "hairdryer",
+        "iron",
+      ].map((item) => (
+        //checkbox
+        <div key={item} className="flex items-center">
+          <input
+            type="checkbox"
+            name={item}
+            checked={newHome[item]}
+            onChange={handleChange}
+            className="w-4 h-4 text-blue-600 border-gray-300 rounded-sm"
+          />
+          {/* nome label affianco alla checkbox togliendo _ quindi air_conditioning diventa air conditioning */}
+          <label className="ml-2 text-sm font-medium">{item.charAt(0).toUpperCase() + item.slice(1).replace("_", " ")}</label>
+        </div>
+      ))}
+
+      <label>Nome Host</label>
+      <input type="text" name="host_name" className="w-full p-2 border rounded" onChange={handleChange} />
+
+      <label>Cognome Host</label>
+      <input type="text" name="host_surname" className="w-full p-2 border rounded" onChange={handleChange} />
+
+      <label>Email Host</label>
+      <input type="email" name="host_email" className="w-full p-2 border rounded" onChange={handleChange} />
+
+      <label>Telefono Host</label>
+      <input type="text" name="host_phone" className="w-full p-2 border rounded" onChange={handleChange} />
 
       <button
-        type="button"
-        className="text-white bg-stone-800 hover:bg-stone-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-stone-800 dark:hover:bg-stone-700 dark:focus:ring-black"
+        type="submit"
+        className="mt-4 text-white bg-stone-800 hover:bg-stone-700 px-5 py-2.5 rounded-lg"
       >
-        invia
-        <svg
-          className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 14 10"
-        >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M1 5h12m0 0L9 1m4 4L9 9"
-          />
-        </svg>
+        Invia
       </button>
     </form>
   );
 };
-export default propertyForm;
+
+export default AddHome;

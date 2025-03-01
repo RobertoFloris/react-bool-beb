@@ -7,4 +7,8 @@
   object-fit: contain;
 }
 
+.thumb {
+  width: 150px;
+}
+
 @import 'tailwindcss'
