@@ -31,22 +31,38 @@ const AddHome = () => {
 
   const { handlerNewHome } = useGlobalContext();
 
+  const [thumb, setThumb] = useState("/img/no-image.jpg")
+
+
+  //se è di tipo checkbox true o false, altrimenti se è di tipo file prendo il file fisico messo in cache in cui c'è il nome altrimenti (se è numero o text) prende direttamente il valore
   const handleChange = (e) => {
-    const { name, type, value, checked } = e.target;
-    setNewHome((prev) => ({
-      ...prev,
-      //alla chiave assegniamo il valore se non è una checkbox altrimenti o true o false
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    const { name, type, value, checked, files } = e.target;
+
+    if (type === "file" && files.length > 0) {
+      setThumb(URL.createObjectURL(files[0]));
+      setNewHome((prev) => ({
+        ...prev,
+        [name]: files[0]
+      }));
+    } else {
+      setNewHome((prev) => ({
+        ...prev,
+        [name]: type === "checkbox" ? checked : value
+      }));
+    }
   };
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     handlerNewHome(newHome);
+
   };
 
   return (
-    <form className="max-w-xl mx-auto p-8 bg-white shadow-md rounded-lg" onSubmit={handleSubmit}>
+    <form className="max-w-xl mx-auto p-8 bg-white shadow-md rounded-lg" onSubmit={handleSubmit} encType="multipart/form-data">
+
       <h1 className="text-2xl font-bold mb-6">Pagina di inserimento immobili</h1>
 
       <label>Quale di queste opzioni descrive meglio il tuo alloggio?</label>
@@ -85,6 +101,10 @@ const AddHome = () => {
 
       <label>Indirizzo</label>
       <input type="text" name="address" className="w-full p-2 border rounded" onChange={handleChange} />
+
+      <label>Immagine di copertina</label>
+      <input type="file" name="thumbnail" className="w-full p-2 border rounded" onChange={handleChange} />
+      <img src={thumb} alt="no-image" className="thumb" />
 
       <label>Descrizione</label>
       <textarea name="description" rows="4" className="w-full p-2 border rounded" onChange={handleChange}></textarea>
@@ -127,9 +147,6 @@ const AddHome = () => {
 
       <label>Telefono Host</label>
       <input type="text" name="host_phone" className="w-full p-2 border rounded" onChange={handleChange} />
-
-      <label>URL Immagine</label>
-      <input type="text" name="thumbnail" className="w-full p-2 border rounded" onChange={handleChange} />
 
       <button
         type="submit"
