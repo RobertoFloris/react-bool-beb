@@ -9,7 +9,7 @@ const DetailsPage = () => {
 
   useEffect(() => {
     fetchBnBId(id);
-  }, []);
+  }, [bnbId]);
 
   return (
     <div>

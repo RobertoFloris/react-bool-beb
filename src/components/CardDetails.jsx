@@ -1,10 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const CardDetails = ({ bnbId }) => {
+  const api_Url = import.meta.env.VITE_API_URL;
+  const { id } = useParams();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }, []);
 
   const {
@@ -25,9 +30,43 @@ const CardDetails = ({ bnbId }) => {
     handleFilter,
   } = bnbId;
 
+  const [reviewData, setReviewData] = useState({
+    name: "",
+    surname: "",
+    vote: "",
+    text: "",
+    check_in_date: "",
+    stay_duration: "",
+  });
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setReviewData({ ...reviewData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(`${api_Url}/${id}/reviews`, reviewData)
+      .then((response) => {
+        console.log(response.data);
+        setIsModalOpen(false);
+      })
+      .catch((error) => {
+        console.error("Error submitting review:", error);
+      });
+  };
+
   return (
     <div className="relative">
-      <Link className="static top-30 left-4" to={-1} onClick={handleFilter}>
+      <Link
+        className="static top-30 left-4 mx-10 mt-10"
+        to={-1}
+        onClick={handleFilter}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -96,6 +135,83 @@ const CardDetails = ({ bnbId }) => {
           ))
         ) : (
           <p className="text-gray-700">Nessuna recensione disponibile</p>
+        )}
+      </div>
+      <div>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="bg-blue-500 text-white p-2 rounded mt-3 mb-3"
+        >
+          Aggiungi una recensione
+        </button>
+
+        {isModalOpen && (
+          <div className="fixed inset-0 flex items-center justify-center bg-opacity-100">
+            <div className="bg-white p-5 rounded shadow-lg">
+              <h2 className="text-xl mb-4">Aggiungi una recensione</h2>
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Nome"
+                  onChange={handleInputChange}
+                  required
+                  className="border p-2 mb-2 w-full"
+                />
+                <input
+                  type="text"
+                  name="surname"
+                  placeholder="Surname"
+                  onChange={handleInputChange}
+                  required
+                  className="border p-2 mb-2 w-full"
+                />
+                <input
+                  type="number"
+                  name="vote"
+                  placeholder="Voto"
+                  onChange={handleInputChange}
+                  required
+                  className="border p-2 mb-2 w-full"
+                />
+                <textarea
+                  name="text"
+                  placeholder="Scrivi una recensione"
+                  onChange={handleInputChange}
+                  required
+                  className="border p-2 mb-2 w-full"
+                ></textarea>
+                <input
+                  type="date"
+                  name="check_in_date"
+                  onChange={handleInputChange}
+                  required
+                  className="border p-2 mb-2 w-full"
+                />
+                <input
+                  type="number"
+                  name="stay_duration"
+                  placeholder="Quanti giorni hai alloggiato?"
+                  onChange={handleInputChange}
+                  required
+                  className="border p-2 mb-2 w-full"
+                />
+                <button
+                  type="submit"
+                  className="bg-blue-500 text-white p-2 rounded"
+                >
+                  Pubblica
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="bg-red-500 text-white p-2 rounded mt-2"
+                >
+                  Chiudi
+                </button>
+              </form>
+            </div>
+          </div>
         )}
       </div>
     </div>
