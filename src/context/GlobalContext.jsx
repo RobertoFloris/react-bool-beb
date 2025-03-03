@@ -109,10 +109,10 @@ const GlobalProvider = ({ children }) => {
     fetchBnB(
       {
         city,
-        minRooms,
-        guest,
-        minRestrooms,
-        minBeds,
+        guest: guest > 0 ? guest : "",
+        minRooms: minRooms > 0 ? minRooms : "",
+        minBeds: minBeds > 0 ? minBeds : "",
+        minRestrooms: minRestrooms > 0 ? minRestrooms : "",
       },
     );
     setIsVisible(false);

@@ -16,8 +16,8 @@ const Filter = () => {
   } = useGlobalContext();
 
   return (
-    <div className="fixed top-5 inset-0 bg-stone-400/40 flex items-center justify-center z-1 mt-10">
-      <div className="w-lg max-h-[90%] flex flex-col gap-4 bg-gray-100  rounded-lg shadow-md top-5 relative">
+    <div className="fixed inset-0 bg-stone-400/40 flex items-center justify-center z-20 ">
+      <div className="w-lg max-h-[90%] flex flex-col gap-4 bg-gray-100  rounded-lg shadow-md top-15 relative">
         <div className="">
           <h3 className="text-center font-bold p-5">Filtri</h3>
           <button
@@ -50,7 +50,7 @@ const Filter = () => {
             <h2 className="font-medium mb-2">Ospiti</h2>
             <input
               type="number"
-              placeholder="Ospiti"
+              placeholder="Qualsiasi nuero"
               className="p-2 border rounded-lg w-[100%]"
               value={guest}
               onChange={(e) => setGuest(e.target.value)}
@@ -65,8 +65,11 @@ const Filter = () => {
                 type="number"
                 placeholder="Qualsiasi"
                 className="p-2 border rounded-lg w-30"
-                value={minRooms}
-                onChange={(e) => setMinRooms(e.target.value)}
+                value={minRooms === null ? "" : minRooms}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value, 10);
+                  setMinRooms(value > 0 ? value : null);
+                }}
                 min="0"
               />
             </div>
