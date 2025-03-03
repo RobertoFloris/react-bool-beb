@@ -68,7 +68,7 @@ const HomePage = () => {
             1024: {
               slidesPerView: 4, // 3 slide per viewport largo
               centeredSlides: true,
-              spaceBetween: 10 // Ancora più spazio tra le slide per visibilità extra
+              spaceBetween: 10, // Ancora più spazio tra le slide per visibilità extra
             },
           }}
         >
