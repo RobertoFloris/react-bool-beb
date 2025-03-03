@@ -117,9 +117,9 @@ const CardDetails = ({ bnbId }) => {
               <p className="text-gray-700 mb-2">
                 <strong>Nome Completo:</strong> {host_name} {host_surname}
               </p>
-              <p className="text-gray-700 mb-2">
+              <a href={`mailto:[${host_email}]`} className="text-gray-700 mb-2">
                 <strong>Email:</strong> {host_email}
-              </p>
+              </a>
               <p className="text-gray-700 mb-2">
                 <strong>Telefono:</strong> {host_phone}
               </p>
