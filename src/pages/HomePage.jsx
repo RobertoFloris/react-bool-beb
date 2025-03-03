@@ -22,7 +22,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="bg-[url('/img/jumbo.avif')] bg-cover bg-right bg-center w-screen h-screen flex items-center max-h-[30rem]">
+      <div className="bg-[url('/img/jumbo.avif')] bg-cover bg-[position:center_0] w-screen h-screen flex items-center max-h-[30rem]">
         <div className="max-w-[60%] max-h-[90%] px-20">
           <p className="text-yellow-500 text-[3rem] font-bold">
             Case vacanze in tutta Italia{" "}
@@ -38,7 +38,7 @@ const HomePage = () => {
           <SearchBar />
           <button
             type="submit"
-            className="px-3 ms-1 bg-yellow-500 border-stone-400 rounded-xl cursor-pointer"
+            className="px-4 ms-1 bg-yellow-500 border-stone-400 rounded-xl cursor-pointer"
           >
             Cerca
           </button>
@@ -50,25 +50,25 @@ const HomePage = () => {
           I nostri utenti consigliano:
         </h2>
         <Swiper
-          spaceBetween={30} // Distanza tra le slide
-          slidesPerView={1} // Quante slide si vedono per volta
+          spaceBetween={20} // Distanza tra le slide
+          slidesPerView={2} // Quante slide si vedono per volta
           centeredSlides={true} // Centra la slide visibile
           navigation
           loop={true} // Imposta il loop continuo dello slider
           breakpoints={{
             640: {
-              slidesPerView: 1, // 1 slide per viewport piccolo (mobile)
+              slidesPerView: 2, // 1 slide per viewport piccolo (mobile)
               centeredSlides: true, // Mantieni centrate le slide anche su mobile
             },
             768: {
               slidesPerView: 2, // 2 slide per viewport medio
               centeredSlides: true,
-              spaceBetween: 20, // Un po' di spazio tra le slide per lasciare intravedere le altre
+              spaceBetween: 2, // Un po' di spazio tra le slide per lasciare intravedere le altre
             },
             1024: {
-              slidesPerView: 3, // 3 slide per viewport largo
+              slidesPerView: 4, // 3 slide per viewport largo
               centeredSlides: true,
-              spaceBetween: 30, // Ancora più spazio tra le slide per visibilità extra
+              spaceBetween: 10 // Ancora più spazio tra le slide per visibilità extra
             },
           }}
         >
