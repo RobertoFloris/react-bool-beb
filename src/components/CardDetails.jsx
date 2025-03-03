@@ -148,9 +148,9 @@ const CardDetails = ({ bnbId }) => {
         )}
       </div>
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-opacity-100">
-          <div className="bg-white p-5 rounded shadow-lg">
-            <h2 className="text-xl mb-4">Aggiungi una recensione</h2>
+        <div className="fixed rounded inset-0 flex items-center justify-center backdrop-blur">
+          <div className="bg-white p-5 rounded shadow-lg w-1/3">
+            <h2 className="text-xl font-bold mb-4">Aggiungi una recensione</h2>
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -158,7 +158,7 @@ const CardDetails = ({ bnbId }) => {
                 placeholder="Nome"
                 onChange={handleInputChange}
                 required
-                className="border p-2 mb-2 w-full"
+                className="border rounded p-2 mb-2 w-full"
               />
               <input
                 type="text"
@@ -166,7 +166,7 @@ const CardDetails = ({ bnbId }) => {
                 placeholder="Surname"
                 onChange={handleInputChange}
                 required
-                className="border p-2 mb-2 w-full"
+                className="border rounded p-2 mb-2 w-full"
               />
               <input
                 type="number"
@@ -174,21 +174,21 @@ const CardDetails = ({ bnbId }) => {
                 placeholder="Voto"
                 onChange={handleInputChange}
                 required
-                className="border p-2 mb-2 w-full"
+                className="border rounded p-2 mb-2 w-full"
               />
               <textarea
                 name="text"
                 placeholder="Scrivi una recensione"
                 onChange={handleInputChange}
                 required
-                className="border p-2 mb-2 w-full"
+                className="border rounded p-2 mb-2 w-full"
               ></textarea>
               <input
                 type="date"
                 name="check_in_date"
                 onChange={handleInputChange}
                 required
-                className="border p-2 mb-2 w-full"
+                className="border rounded p-2 mb-2 w-full"
               />
               <input
                 type="number"
@@ -196,11 +196,11 @@ const CardDetails = ({ bnbId }) => {
                 placeholder="Quanti giorni hai alloggiato?"
                 onChange={handleInputChange}
                 required
-                className="border p-2 mb-2 w-full"
+                className="border rounded p-2 mb-2 w-full"
               />
               <button
                 type="submit"
-                className="bg-blue-500 text-white p-2 rounded"
+                className="bg-blue-500 text-white p-2 rounded mx-2"
               >
                 Pubblica
               </button>
