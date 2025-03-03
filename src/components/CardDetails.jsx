@@ -148,9 +148,9 @@ const CardDetails = ({ bnbId }) => {
         )}
       </div>
       {isModalOpen && (
-        <div className="fixed rounded inset-0 flex items-center justify-center backdrop-blur">
+        <div className="fixed inset-0 flex items-center justify-center">
           <div className="bg-white p-5 rounded shadow-lg w-1/3">
-            <h2 className="text-xl font-bold mb-4">Aggiungi una recensione</h2>
+            <h2 className="text-xl mb-4">Aggiungi una recensione</h2>
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
