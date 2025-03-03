@@ -7,7 +7,7 @@ const DefaultLayout = () => {
   return (
     <>
       <Header />
-      <main className="bg-stone-100 overflow-x-hidden">
+      <main className="bg-stone-100 relative min-h-[100vh]">
         <Outlet />
       </main>
       <Footer />
