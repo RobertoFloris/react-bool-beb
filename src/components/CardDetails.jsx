@@ -127,93 +127,94 @@ const CardDetails = ({ bnbId }) => {
           </div>
         </div>
       </div>
-      <h3 className="text-xl font-bold mt-10 mb-3 mx-20">Recensioni:</h3>
-      <div className="flex flex-col gap-4 m-4 md:m-10 mx-4 md:mx-20">
-        {reviews?.length > 0 ? (
-          reviews.map((review) => (
-            <ReviewCard key={review.id} review={review} />
-          ))
-        ) : (
-          <p className="text-gray-700">Nessuna recensione disponibile</p>
-        )}
-      </div>
-      <div>
+      <div className="flex items-center justify-between mt-10 mb-3 mx-20">
+        <h3 className="text-xl font-bold">Recensioni:</h3>
         <button
           onClick={() => setIsModalOpen(true)}
           className="bg-blue-500 text-white p-2 rounded mt-3 mb-3"
         >
           Aggiungi una recensione
         </button>
-
-        {isModalOpen && (
-          <div className="fixed inset-0 flex items-center justify-center bg-opacity-100">
-            <div className="bg-white p-5 rounded shadow-lg">
-              <h2 className="text-xl mb-4">Aggiungi una recensione</h2>
-              <form onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Nome"
-                  onChange={handleInputChange}
-                  required
-                  className="border p-2 mb-2 w-full"
-                />
-                <input
-                  type="text"
-                  name="surname"
-                  placeholder="Surname"
-                  onChange={handleInputChange}
-                  required
-                  className="border p-2 mb-2 w-full"
-                />
-                <input
-                  type="number"
-                  name="vote"
-                  placeholder="Voto"
-                  onChange={handleInputChange}
-                  required
-                  className="border p-2 mb-2 w-full"
-                />
-                <textarea
-                  name="text"
-                  placeholder="Scrivi una recensione"
-                  onChange={handleInputChange}
-                  required
-                  className="border p-2 mb-2 w-full"
-                ></textarea>
-                <input
-                  type="date"
-                  name="check_in_date"
-                  onChange={handleInputChange}
-                  required
-                  className="border p-2 mb-2 w-full"
-                />
-                <input
-                  type="number"
-                  name="stay_duration"
-                  placeholder="Quanti giorni hai alloggiato?"
-                  onChange={handleInputChange}
-                  required
-                  className="border p-2 mb-2 w-full"
-                />
-                <button
-                  type="submit"
-                  className="bg-blue-500 text-white p-2 rounded"
-                >
-                  Pubblica
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="bg-red-500 text-white p-2 rounded mt-2"
-                >
-                  Chiudi
-                </button>
-              </form>
+      </div>
+      <div className="flex flex-col m-10">
+        {reviews?.length > 0 ? (
+          reviews.map((review) => (
+            <div className="m-2 w-full" key={review.id}>
+              <ReviewCard review={review} />
             </div>
-          </div>
+          ))
+        ) : (
+          <p className="text-gray-700">Nessuna recensione disponibile</p>
         )}
       </div>
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-opacity-100">
+          <div className="bg-white p-5 rounded shadow-lg">
+            <h2 className="text-xl mb-4">Aggiungi una recensione</h2>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="name"
+                placeholder="Nome"
+                onChange={handleInputChange}
+                required
+                className="border p-2 mb-2 w-full"
+              />
+              <input
+                type="text"
+                name="surname"
+                placeholder="Surname"
+                onChange={handleInputChange}
+                required
+                className="border p-2 mb-2 w-full"
+              />
+              <input
+                type="number"
+                name="vote"
+                placeholder="Voto"
+                onChange={handleInputChange}
+                required
+                className="border p-2 mb-2 w-full"
+              />
+              <textarea
+                name="text"
+                placeholder="Scrivi una recensione"
+                onChange={handleInputChange}
+                required
+                className="border p-2 mb-2 w-full"
+              ></textarea>
+              <input
+                type="date"
+                name="check_in_date"
+                onChange={handleInputChange}
+                required
+                className="border p-2 mb-2 w-full"
+              />
+              <input
+                type="number"
+                name="stay_duration"
+                placeholder="Quanti giorni hai alloggiato?"
+                onChange={handleInputChange}
+                required
+                className="border p-2 mb-2 w-full"
+              />
+              <button
+                type="submit"
+                className="bg-blue-500 text-white p-2 rounded"
+              >
+                Pubblica
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(false)}
+                className="bg-red-500 text-white p-2 rounded mt-2"
+              >
+                Chiudi
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
