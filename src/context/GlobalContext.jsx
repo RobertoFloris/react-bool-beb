@@ -134,6 +134,19 @@ const GlobalProvider = ({ children }) => {
       .catch((error) => console.error("Errore nel fetch:", error));
   };
 
+  const addReview = (bnbId, reviewData) => {
+    axios
+      .post(`${api_url}/${bnbId}/reviews`, reviewData)
+      .then((response) => {
+        console.log("Recensione aggiunta:", response.data);
+        fetchBnBId(bnbId); // Ricarica i dati dell'annuncio aggiornato
+      })
+      .catch((error) => {
+        console.error("Errore nell'invio della recensione:", error);
+      });
+  };
+
+
 
 
   const value = {
@@ -165,7 +178,8 @@ const GlobalProvider = ({ children }) => {
     countRecords,
     fetchBestBnB,
     bestbnb,
-    handlerNewHome
+    handlerNewHome,
+    addReview
   };
 
   return (
