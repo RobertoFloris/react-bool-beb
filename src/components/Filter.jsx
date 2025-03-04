@@ -13,6 +13,8 @@ const Filter = () => {
     setMinRestrooms,
     handleFilter,
     setIsVisible,
+    maxPrice,
+    setMaxPrice
   } = useGlobalContext();
 
   return (
@@ -103,6 +105,21 @@ const Filter = () => {
                 onChange={(e) => {
                   const value = parseInt(e.target.value, 10);
                   setMinRestrooms(value > 0 ? value : null);
+                }}
+                min="0"
+              />
+            </div>
+
+            <div className="flex justify-between">
+              <p className="content-center">Prezzo massimo per notte</p>
+              <input
+                type="number"
+                placeholder="Qualsiasi"
+                className="p-2 border rounded-lg w-30"
+                value={maxPrice === null ? "" : maxPrice}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value, 10);
+                  setMaxPrice(value > 0 ? value : null);
                 }}
                 min="0"
               />

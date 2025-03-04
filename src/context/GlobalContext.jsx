@@ -20,6 +20,7 @@ const GlobalProvider = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [filters, setFilters] = useState({})
   const [countRecords, setCountRecords] = useState("")
+  const [maxPrice, setMaxPrice] = useState("")
 
 
 
@@ -99,7 +100,7 @@ const GlobalProvider = ({ children }) => {
     setMinBeds("");
     setGuest("");
     setMinRestrooms("");
-
+    setMaxPrice("");
     fetchBnB();
   };
 
@@ -113,6 +114,7 @@ const GlobalProvider = ({ children }) => {
         minRooms: minRooms > 0 ? minRooms : "",
         minBeds: minBeds > 0 ? minBeds : "",
         minRestrooms: minRestrooms > 0 ? minRestrooms : "",
+        maxPrice: maxPrice > 0 ? maxPrice : "",
       },
     );
     setIsVisible(false);
@@ -179,7 +181,9 @@ const GlobalProvider = ({ children }) => {
     fetchBestBnB,
     bestbnb,
     handlerNewHome,
-    addReview
+    addReview,
+    maxPrice,
+    setMaxPrice
   };
 
   return (

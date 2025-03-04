@@ -97,6 +97,18 @@ const Results = () => {
               <strong className="hidden md:flex me-2">Bagni:</strong> {filters.minRestrooms}
             </button>
           )}
+
+          {filters.maxPrice && (
+            <button
+              className="p-2 flex items-center rounded-xl bg-neutral-50/50 cursor-pointer">
+              <strong className="md:hidden">
+                <i className="fa-solid fa-shower me-2"></i>
+              </strong>
+              <strong className="hidden md:flex me-2">Prezzo massimo:</strong> {filters.maxPrice}
+            </button>
+          )}
+
+
         </div>
 
 
@@ -135,7 +147,7 @@ const Results = () => {
         </button>
 
         <span>
-          Pagina {currentPage} di {totalPages}
+          {currentPage} di {totalPages}
         </span>
 
         <button

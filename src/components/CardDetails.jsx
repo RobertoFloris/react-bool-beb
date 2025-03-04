@@ -21,7 +21,8 @@ const ImageSlider = ({ thumbnail, foto1, foto2 }) => {
       <img
         src={allImages[currentIndex]}
         alt="Immagine struttura"
-        className="w-full h-auto object-cover rounded-lg"
+        className="w-full h-130 object-cover rounded-lg"
+        style={{ objectPosition: "center" }}
       />
       <button
         onClick={prevImage}
@@ -70,11 +71,24 @@ const CardDetails = ({ bnbId }) => {
     host_email,
     host_phone,
     thumbnail,
-    images,
     reviews,
     handleFilter,
     foto1,
-    foto2 } = bnbId;
+    foto2,
+    price,
+    type,
+    accomodation_type,
+    guest_number,
+    wifi,
+    tv,
+    pool,
+    kitchen,
+    washing_machine,
+    heating,
+    air_conditioning,
+    hairdryer,
+    iron
+  } = bnbId;
 
   const handleInputChange = (e) => {
     setReviewData({ ...reviewData, [e.target.name]: e.target.value });
@@ -83,7 +97,7 @@ const CardDetails = ({ bnbId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${api_Url}/${id}/reviews`, reviewData)
+      .post(`${api_Url}/homes/${id}/reviews`, reviewData)
       .then((response) => {
         console.log(response.data);
         setIsModalOpen(false);
@@ -105,13 +119,32 @@ const CardDetails = ({ bnbId }) => {
         <div className="p-4 m-5 w-full md:w-1/3 h-full flex flex-col justify-between">
           <h2 className="text-2xl font-bold mb-2">{description}</h2>
           <div className="flex flex-col">
+            <p className="text-gray-700 mb-2"><strong>Tipo:</strong> {type}</p>
+            <p className="text-gray-700 mb-2"><strong>Tipo di alloggio:</strong> {accomodation_type}</p>
             <p className="text-gray-700 mb-2"><strong>Città:</strong> {city}</p>
             <p className="text-gray-700 mb-2"><strong>Indirizzo:</strong> {address}</p>
+            <p className="text-gray-700 mb-2"><strong>Ospiti:</strong> {guest_number}</p>
             <p className="text-gray-700 mb-2"><strong>Letti:</strong> {beds}</p>
             <p className="text-gray-700 mb-2"><strong>Camere:</strong> {rooms}</p>
             <p className="text-gray-700 mb-2"><strong>Bagni:</strong> {restrooms}</p>
             <p className="text-gray-700 mb-2"><strong>Metri Quadrati:</strong> {square_meters}</p>
+            <p className="text-gray-700 mb-2"><strong>Prezzo:</strong> {price ? `${price} € a notte` : "Non disponibile"}</p>
             <p className="text-gray-700 mb-2"><strong>Likes:</strong> {likes} ❤️</p>
+            <p className="text-gray-700 mb-2"><strong>Host:</strong> {host_name} {host_surname}</p>
+            <p className="text-gray-700 mb-2"><strong>Email Host:</strong> {host_email}</p>
+            <p className="text-gray-700 mb-2"><strong>Telefono Host:</strong> {host_phone}</p>
+            <p className="text-gray-700 mb-2"><strong>Servizi:</strong></p>
+            <ul className="list-disc list-inside">
+              <li className="text-gray-700 mb-2">WiFi: {wifi ? "Sì" : "No"}</li>
+              <li className="text-gray-700 mb-2">TV: {tv ? "Sì" : "No"}</li>
+              <li className="text-gray-700 mb-2">Piscina: {pool ? "Sì" : "No"}</li>
+              <li className="text-gray-700 mb-2">Cucina: {kitchen ? "Sì" : "No"}</li>
+              <li className="text-gray-700 mb-2">Lavatrice: {washing_machine ? "Sì" : "No"}</li>
+              <li className="text-gray-700 mb-2">Riscaldamento: {heating ? "Sì" : "No"}</li>
+              <li className="text-gray-700 mb-2">Aria condizionata: {air_conditioning ? "Sì" : "No"}</li>
+              <li className="text-gray-700 mb-2">Asciugacapelli: {hairdryer ? "Sì" : "No"}</li>
+              <li className="text-gray-700 mb-2">Ferro da stiro: {iron ? "Sì" : "No"}</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -119,7 +152,7 @@ const CardDetails = ({ bnbId }) => {
         <h3 className="text-xl font-bold">Recensioni:</h3>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="bg-blue-500 text-white p-2 rounded mt-3 mb-3"
+          className="px-2 py-2 ms-1 text-xs text-stone-600 bg-yellow-500 border-stone-400 rounded-xl cursor-pointer"
         >
           Aggiungi una recensione
         </button>
@@ -151,7 +184,7 @@ const CardDetails = ({ bnbId }) => {
               <input
                 type="text"
                 name="surname"
-                placeholder="Surname"
+                placeholder="Cognome"
                 onChange={handleInputChange}
                 required
                 className="border rounded p-2 mb-2 w-full"
