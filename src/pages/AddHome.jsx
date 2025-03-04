@@ -18,7 +18,8 @@ const AddHome = () => {
     host_email: "",
     host_phone: "",
     thumbnail: "",
-    images: "",
+    foto1: "",
+    foto2: "",
     wifi: false,
     tv: false,
     pool: false,
@@ -33,21 +34,42 @@ const AddHome = () => {
   const { handlerNewHome } = useGlobalContext();
 
   const [thumb, setThumb] = useState("/img/no-image.jpg");
-  const [img, setImg] = useState("/img/no-image.jpg");
+
+  const [foto1, setFoto1] = useState("/img/no-image.jpg");
+
+  const [foto2, setFoto2] = useState("/img/no-image.jpg");
+
 
   //se è di tipo checkbox true o false, altrimenti se è di tipo file prendo il file fisico messo in cache in cui c'è il nome altrimenti (se è numero o text) prende direttamente il valore
   const handleChange = (e) => {
     const { name, type, value, checked, files } = e.target;
 
-    if (type === "file" && files.length > 0 && name === "thumbnail") {
+    // if (type === "file" && files.length > 0 && name === "thumbnail") {
+    //   setThumb(URL.createObjectURL(files[0]));
+    //   setNewHome((prev) => ({
+    //     ...prev,
+    //     [name]: files[0],
+    //   }));
+
+    // } else 
+    if (type === "file" && files.length > 0 && name == "thumbnail") {
       setThumb(URL.createObjectURL(files[0]));
       setNewHome((prev) => ({
         ...prev,
         [name]: files[0],
       }));
+    }
 
-    } else if (type === "file" && files.length > 0 && name == "images") {
-      setImg(URL.createObjectURL(files[0]));
+    else if (type === "file" && files.length > 0 && name == "foto1") {
+      setFoto1(URL.createObjectURL(files[0]));
+      setNewHome((prev) => ({
+        ...prev,
+        [name]: files[0],
+      }));
+    }
+
+    else if (type === "file" && files.length > 0 && name == "foto2") {
+      setFoto2(URL.createObjectURL(files[0]));
       setNewHome((prev) => ({
         ...prev,
         [name]: files[0],
@@ -64,6 +86,8 @@ const AddHome = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(newHome);
+
     handlerNewHome(newHome);
   };
 
@@ -178,14 +202,23 @@ const AddHome = () => {
       />
       <img src={thumb} alt="no-image" className="thumb" />
 
-      <label>Altra foto</label>
+      <label>Immagine aggiuntiva</label>
       <input
         type="file"
-        name="images"
+        name="foto1"
         className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         onChange={handleChange}
       />
-      <img src={img} alt="no-image" className="thumb" />
+      <img src={foto1} alt="no-image" className="thumb" />
+
+      <label>Immagine aggiuntiva</label>
+      <input
+        type="file"
+        name="foto2"
+        className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        onChange={handleChange}
+      />
+      <img src={foto2} alt="no-image" className="thumb" />
 
       <label>Descrizione</label>
       <textarea

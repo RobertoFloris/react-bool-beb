@@ -4,8 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const ImageSlider = ({ thumbnail, images }) => {
-  const allImages = [thumbnail, ...(images || [])];
+const ImageSlider = ({ thumbnail, foto1, foto2 }) => {
+  const allImages = [thumbnail, foto1, foto2].filter(Boolean);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextImage = () => {
@@ -73,7 +73,8 @@ const CardDetails = ({ bnbId }) => {
     images,
     reviews,
     handleFilter,
-  } = bnbId;
+    foto1,
+    foto2 } = bnbId;
 
   const handleInputChange = (e) => {
     setReviewData({ ...reviewData, [e.target.name]: e.target.value });
@@ -100,7 +101,7 @@ const CardDetails = ({ bnbId }) => {
         </svg>
       </Link>
       <div className="flex flex-col md:flex-row items-center mt-10 mx-4 md:mx-20">
-        <ImageSlider thumbnail={thumbnail} images={images} />
+        <ImageSlider thumbnail={thumbnail} foto1={foto1} foto2={foto2} />
         <div className="p-4 m-5 w-full md:w-1/3 h-full flex flex-col justify-between">
           <h2 className="text-2xl font-bold mb-2">{description}</h2>
           <div className="flex flex-col">

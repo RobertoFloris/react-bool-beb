@@ -131,7 +131,7 @@ const GlobalProvider = ({ children }) => {
       .then((res) => {
         console.log(res.data);
       })
-      .catch((error) => console.error("Errore nel fetch:", error));
+      .catch((error) => console.error(error));
   };
 
   const addReview = (bnbId, reviewData) => {
