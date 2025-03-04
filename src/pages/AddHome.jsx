@@ -38,10 +38,11 @@ const AddHome = () => {
     const { name, type, value, checked, files } = e.target;
 
     if (type === "file" && files.length > 0) {
-      setThumb(URL.createObjectURL(files[0]));
+      const fileArray = Array.from(files);
+      setThumb(URL.createObjectURL(fileArray[0]));
       setNewHome((prev) => ({
         ...prev,
-        [name]: files[0],
+        [name]: [...prev[name], ...fileArray],
       }));
     } else {
       setNewHome((prev) => ({
@@ -156,8 +157,20 @@ const AddHome = () => {
         name="thumbnail"
         className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         onChange={handleChange}
+        multiple
       />
-      <img src={thumb} alt="no-image" className="thumb" />
+      <div className="flex flex-wrap mt-4">
+        {newHome.thumbnail &&
+          Array.isArray(newHome.thumbnail) &&
+          newHome.thumbnail.map((file, index) => (
+            <img
+              key={index}
+              src={URL.createObjectURL(file)}
+              alt={`uploaded-${index}`}
+              className="w-24 h-24 object-cover rounded-lg m-2"
+            />
+          ))}
+      </div>
 
       <label>Descrizione</label>
       <textarea
