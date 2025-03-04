@@ -58,7 +58,7 @@ const AddHome = () => {
 
   return (
     <form
-      className="max-w-4xl mx-auto p-10 bg-white shadow-lg rounded-lg border border-gray-300"
+      className="max-w-4xl mx-auto my-3 p-10 bg-white shadow-lg rounded-lg border border-gray-300"
       onSubmit={handleSubmit}
       encType="multipart/form-data"
     >
