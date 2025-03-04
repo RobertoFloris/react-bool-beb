@@ -6,8 +6,7 @@ const GlobalContext = createContext();
 const GlobalProvider = ({ children }) => {
   const api_url = import.meta.env.VITE_API_URL;
 
-
-  const [bestbnb, setBestbnb] = useState([])
+  const [bestbnb, setBestbnb] = useState([]);
   const [bnb, setBnb] = useState([]);
   const [bnbId, setBnbId] = useState({});
   const [city, setCity] = useState("");
@@ -18,23 +17,19 @@ const GlobalProvider = ({ children }) => {
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [isVisible, setIsVisible] = useState(false);
-  const [filters, setFilters] = useState({})
-  const [countRecords, setCountRecords] = useState("")
-  const [maxPrice, setMaxPrice] = useState("")
-
-
-
+  const [filters, setFilters] = useState({});
+  const [countRecords, setCountRecords] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
 
   const fetchBestBnB = () => {
-    axios.get(api_url)
+    axios
+      .get(api_url)
       .then((res) => {
         setBestbnb(res.data.data.slice(0, 6));
         // Prende solo i primi 6 risultati
       })
       .catch((error) => console.error("Errore nel fetch:", error));
   };
-
-
 
   const fetchBnB = (filters = {}, page = currentPage) => {
     setFilters(filters);
@@ -46,10 +41,8 @@ const GlobalProvider = ({ children }) => {
         setBnb(res.data.data);
         setTotalPages(res.data.totalPages);
         setCountRecords(res.data.totalItems);
-
       })
       .catch((err) => console.log(err));
-
   };
 
   const nextPage = () => {
@@ -104,21 +97,18 @@ const GlobalProvider = ({ children }) => {
     fetchBnB();
   };
 
-
   const handleFilter = (e) => {
     e.preventDefault();
-    fetchBnB(
-      {
-        city,
-        guest: guest > 0 ? guest : "",
-        minRooms: minRooms > 0 ? minRooms : "",
-        minBeds: minBeds > 0 ? minBeds : "",
-        minRestrooms: minRestrooms > 0 ? minRestrooms : "",
-        maxPrice: maxPrice > 0 ? maxPrice : "",
-      },
-    );
+    fetchBnB({
+      city,
+      guest: guest > 0 ? guest : "",
+      minRooms: minRooms > 0 ? minRooms : "",
+      minBeds: minBeds > 0 ? minBeds : "",
+      minRestrooms: minRestrooms > 0 ? minRestrooms : "",
+      maxPrice: maxPrice > 0 ? maxPrice : "",
+    });
     setIsVisible(false);
-  }
+  };
 
   const handlerNewHome = (newHome) => {
     const formData = new FormData();
@@ -127,13 +117,16 @@ const GlobalProvider = ({ children }) => {
       formData.append(key, newHome[key]);
     }
 
-    axios.post(api_url, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    })
+    return axios
+      .post(api_url, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
       .then((res) => {
         console.log(res.data);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const addReview = (bnbId, reviewData) => {
@@ -147,9 +140,6 @@ const GlobalProvider = ({ children }) => {
         console.error("Errore nell'invio della recensione:", error);
       });
   };
-
-
-
 
   const value = {
     fetchBnB,
@@ -183,14 +173,14 @@ const GlobalProvider = ({ children }) => {
     handlerNewHome,
     addReview,
     maxPrice,
-    setMaxPrice
+    setMaxPrice,
   };
 
   return (
     <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
   );
-
 };
+
 const useGlobalContext = () => {
   return useContext(GlobalContext);
 };
