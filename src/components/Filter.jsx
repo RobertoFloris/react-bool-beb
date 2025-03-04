@@ -45,20 +45,24 @@ const Filter = () => {
           onSubmit={handleFilter}
         >
           <SearchBar />
-
           <div className="border-b border-gray-900/10 pb-3">
             <h2 className="font-medium mb-2">Ospiti</h2>
             <input
               type="number"
-              placeholder="Qualsiasi nuero"
-              className="p-2 border rounded-lg w-[100%]"
-              value={guest}
-              onChange={(e) => setGuest(e.target.value)}
+              placeholder="Qualsiasi numero"
+              className="p-2 border rounded-lg w-full"
+              value={guest === null ? "" : guest}
+              onChange={(e) => {
+                const value = parseInt(e.target.value, 10);
+                setGuest(value > 0 ? value : null);
+              }}
               min="0"
             />
           </div>
+
           <div className="flex flex-col gap-4 border-b border-gray-900/10 pb-3">
             <h2 className="font-medium">Stanze e letti</h2>
+
             <div className="flex justify-between">
               <p className="content-center">Camere</p>
               <input
@@ -73,25 +77,33 @@ const Filter = () => {
                 min="0"
               />
             </div>
+
             <div className="flex justify-between">
               <p className="content-center">Letti</p>
               <input
                 type="number"
                 placeholder="Qualsiasi"
                 className="p-2 border rounded-lg w-30"
-                value={minBeds}
-                onChange={(e) => setMinBeds(e.target.value)}
+                value={minBeds === null ? "" : minBeds}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value, 10);
+                  setMinBeds(value > 0 ? value : null);
+                }}
                 min="0"
               />
             </div>
+
             <div className="flex justify-between">
               <p className="content-center">Bagni</p>
               <input
                 type="number"
                 placeholder="Qualsiasi"
                 className="p-2 border rounded-lg w-30"
-                value={minRestrooms}
-                onChange={(e) => setMinRestrooms(e.target.value)}
+                value={minRestrooms === null ? "" : minRestrooms}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value, 10);
+                  setMinRestrooms(value > 0 ? value : null);
+                }}
                 min="0"
               />
             </div>
