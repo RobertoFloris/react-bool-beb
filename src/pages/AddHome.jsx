@@ -18,6 +18,7 @@ const AddHome = () => {
     host_email: "",
     host_phone: "",
     thumbnail: "",
+    images: "",
     wifi: false,
     tv: false,
     pool: false,
@@ -32,18 +33,28 @@ const AddHome = () => {
   const { handlerNewHome } = useGlobalContext();
 
   const [thumb, setThumb] = useState("/img/no-image.jpg");
+  const [img, setImg] = useState("/img/no-image.jpg");
 
   //se è di tipo checkbox true o false, altrimenti se è di tipo file prendo il file fisico messo in cache in cui c'è il nome altrimenti (se è numero o text) prende direttamente il valore
   const handleChange = (e) => {
     const { name, type, value, checked, files } = e.target;
 
-    if (type === "file" && files.length > 0) {
+    if (type === "file" && files.length > 0 && name === "thumbnail") {
       setThumb(URL.createObjectURL(files[0]));
       setNewHome((prev) => ({
         ...prev,
         [name]: files[0],
       }));
-    } else {
+
+    } else if (type === "file" && files.length > 0 && name == "images") {
+      setImg(URL.createObjectURL(files[0]));
+      setNewHome((prev) => ({
+        ...prev,
+        [name]: files[0],
+      }));
+    }
+
+    else {
       setNewHome((prev) => ({
         ...prev,
         [name]: type === "checkbox" ? checked : value,
@@ -142,6 +153,14 @@ const AddHome = () => {
         min="0"
       />
 
+      <label>Prezzo a notte?</label>
+      <input
+        type="number"
+        name="price"
+        className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        onChange={handleChange}
+      />
+
       <label>Indirizzo</label>
       <input
         type="text"
@@ -158,6 +177,15 @@ const AddHome = () => {
         onChange={handleChange}
       />
       <img src={thumb} alt="no-image" className="thumb" />
+
+      <label>Altra foto</label>
+      <input
+        type="file"
+        name="images"
+        className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        onChange={handleChange}
+      />
+      <img src={img} alt="no-image" className="thumb" />
 
       <label>Descrizione</label>
       <textarea
