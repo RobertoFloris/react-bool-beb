@@ -109,10 +109,10 @@ const HomePage = () => {
               className="w-full h-32 object-cover rounded-lg mb-4 icons"
             />
             <h2 className="text-2xl font-semibold text-center mb-2">
-              Conferma immediata
+              Contatto immediato
             </h2>
             <p className="text-gray-600 text-center">
-              La prenotazione è istantanea per la maggior parte dei soggiorni
+              Possibilità di inviare una mail al proprietario con un semplice click!
             </p>
           </div>
 
