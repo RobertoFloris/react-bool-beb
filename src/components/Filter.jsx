@@ -46,9 +46,10 @@ const Filter = () => {
           className="flex flex-col gap-4 overflow-auto p-5"
           onSubmit={handleFilter}
         >
-          <SearchBar />
           <div className="border-b border-gray-900/10 pb-3">
-            <h2 className="font-medium mb-2">Ospiti</h2>
+            <h2 className="mb-2">Città</h2>
+            <SearchBar />
+            <h2 className="font-medium my-2">Ospiti</h2>
             <input
               type="number"
               placeholder="Qualsiasi numero"
