@@ -191,7 +191,7 @@ const CardDetails = ({ bnbId }) => {
         <ul className="list-none flex flex-wrap">
           {services.filter(service => service.available).map((service, index) => (
             <li key={index} className="flex items-center mb-2 mr-4">
-              <span className="text-green-400 mr-2"><i class="fa-solid fa-check"></i></span>
+              <span className="text-green-400 mr-2"><i className="fa-solid fa-check"></i></span>
               <span className="ml-2">{service.name}</span>
             </li>
           ))}
