@@ -48,25 +48,19 @@ const AddHome = () => {
         ...prev,
         [name]: files[0],
       }));
-    }
-
-    else if (type === "file" && files.length > 0 && name == "foto1") {
+    } else if (type === "file" && files.length > 0 && name == "foto1") {
       setFoto1(URL.createObjectURL(files[0]));
       setNewHome((prev) => ({
         ...prev,
         [name]: files[0],
       }));
-    }
-
-    else if (type === "file" && files.length > 0 && name == "foto2") {
+    } else if (type === "file" && files.length > 0 && name == "foto2") {
       setFoto2(URL.createObjectURL(files[0]));
       setNewHome((prev) => ({
         ...prev,
         [name]: files[0],
       }));
-    }
-
-    else {
+    } else {
       setNewHome((prev) => ({
         ...prev,
         [name]: type === "checkbox" ? checked : value,
@@ -115,7 +109,9 @@ const AddHome = () => {
         </h1>
 
         <div className="mb-4">
-          <label>Quale di queste opzioni descrive meglio il tuo alloggio? *</label>
+          <label>
+            Quale di queste opzioni descrive meglio il tuo alloggio? *
+          </label>
           <select
             name="type"
             className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -152,68 +148,70 @@ const AddHome = () => {
           />
         </div>
 
-        <div className="mb-4">
-          <label>Numero massimo di ospiti *</label>
-          <input
-            type="number"
-            name="guest_number"
-            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onChange={handleChange}
-          />
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="mb-4">
+            <label>Numero massimo di ospiti *</label>
+            <input
+              type="number"
+              name="guest_number"
+              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={handleChange}
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>Numero di camere da letto *</label>
-          <input
-            type="number"
-            name="rooms"
-            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onChange={handleChange}
-            min="0"
-          />
-        </div>
+          <div className="mb-4">
+            <label>Numero di camere da letto *</label>
+            <input
+              type="number"
+              name="rooms"
+              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={handleChange}
+              min="0"
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>Numero di letti *</label>
-          <input
-            type="number"
-            name="beds"
-            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onChange={handleChange}
-            min="0"
-          />
-        </div>
+          <div className="mb-4">
+            <label>Numero di letti *</label>
+            <input
+              type="number"
+              name="beds"
+              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={handleChange}
+              min="0"
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>Numero di bagni *</label>
-          <input
-            type="number"
-            name="restrooms"
-            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onChange={handleChange}
-            min="0"
-          />
-        </div>
+          <div className="mb-4">
+            <label>Numero di bagni *</label>
+            <input
+              type="number"
+              name="restrooms"
+              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={handleChange}
+              min="0"
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>Metri quadri *</label>
-          <input
-            type="number"
-            name="square_meters"
-            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onChange={handleChange}
-            min="0"
-          />
-        </div>
+          <div className="mb-4">
+            <label>Metri quadri *</label>
+            <input
+              type="number"
+              name="square_meters"
+              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={handleChange}
+              min="0"
+            />
+          </div>
 
-        <div className="mb-4">
-          <label>Prezzo a notte *</label>
-          <input
-            type="number"
-            name="price"
-            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onChange={handleChange}
-          />
+          <div className="mb-4">
+            <label>Prezzo a notte *</label>
+            <input
+              type="number"
+              name="price"
+              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
         <div className="mb-4">
@@ -295,18 +293,18 @@ const AddHome = () => {
                 {item === "pool"
                   ? "Piscina"
                   : item === "kitchen"
-                    ? "Cucina"
-                    : item === "washing_machine"
-                      ? "Lavatrice"
-                      : item === "heating"
-                        ? "Riscaldamento"
-                        : item === "air_conditioning"
-                          ? "Aria condizionata"
-                          : item === "hairdryer"
-                            ? "Phon"
-                            : item === "iron"
-                              ? "Ferro da stiro"
-                              : item}
+                  ? "Cucina"
+                  : item === "washing_machine"
+                  ? "Lavatrice"
+                  : item === "heating"
+                  ? "Riscaldamento"
+                  : item === "air_conditioning"
+                  ? "Aria condizionata"
+                  : item === "hairdryer"
+                  ? "Phon"
+                  : item === "iron"
+                  ? "Ferro da stiro"
+                  : item}
               </label>
             </div>
           ))}
