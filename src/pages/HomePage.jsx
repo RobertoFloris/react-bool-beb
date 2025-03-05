@@ -22,7 +22,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="bg-[url('/img/jumbo.avif')] bg-cover bg-[position:center_30%] w-screen h-screen flex items-center max-h-[30rem]">
+      <div className="bg-[url('/img/jumbo.avif')] bg-cover bg-[position:center_30%] w-screen h-screen flex overflow-x-hidden items-center max-h-[30rem]">
         <div className="max-w-[60%] max-h-[90%] px-20">
           <p className="text-yellow-500 text-[3rem] font-bold [text-shadow:3px_3px_10px_rgba(0,0,0,0.8)]">
             Case vacanze in tutta Italia
