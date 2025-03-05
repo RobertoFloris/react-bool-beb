@@ -88,7 +88,7 @@ const CardDetails = ({ bnbId }) => {
     heating,
     air_conditioning,
     hairdryer,
-    iron
+    iron,
   } = bnbId;
 
   const handleInputChange = (e) => {
@@ -131,8 +131,19 @@ const CardDetails = ({ bnbId }) => {
   return (
     <div className="relative">
       <Link className="top-30 mx-10 mt-10" to={-1} onClick={handleFilter}>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 bg-stone-400 text-white mx-5 rounded cursor-pointer">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-8 h-8 bg-stone-400 text-white mx-5 rounded cursor-pointer"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+          />
         </svg>
       </Link>
       <div className="flex flex-col md:flex-row items-center mt-10 mx-4 md:mx-20">
@@ -140,19 +151,38 @@ const CardDetails = ({ bnbId }) => {
         <div className="p-4 m-5 w-full md:w-1/3 h-full flex flex-col justify-between">
           <h1 className="text-3xl font-bold mb-4 text-left">{description}</h1>
           <div className="flex flex-col">
-            <p className="text-gray-700 mb-2"><strong>Tipo di abitazione:</strong> {type}</p>
-            <p className="text-gray-700 mb-2"><strong>Tipo di alloggio:</strong> {accomodation_type}</p>
-            <p className="text-gray-700 mb-2"><strong>Città:</strong> {city}</p>
-            <p className="text-gray-700 mb-2"><strong>Indirizzo:</strong> {address}</p>
-            <p className="text-gray-700 mb-2"><strong>Ospiti:</strong> {guest_number}</p>
-            <p className="text-gray-700 mb-2"><strong>Letti:</strong> {beds}</p>
-            <p className="text-gray-700 mb-2"><strong>Camere:</strong> {rooms}</p>
-            <p className="text-gray-700 mb-2"><strong>Bagni:</strong> {restrooms}</p>
-            <p className="text-gray-700 mb-2"><strong>Metri Quadrati:</strong> {square_meters}</p>
+            <p className="text-gray-700 mb-2">
+              <strong>Tipo di abitazione:</strong> {type}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Tipo di alloggio:</strong> {accomodation_type}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Città:</strong> {city}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Indirizzo:</strong> {address}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Ospiti:</strong> {guest_number}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Letti:</strong> {beds}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Camere:</strong> {rooms}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Bagni:</strong> {restrooms}
+            </p>
+            <p className="text-gray-700 mb-2">
+              <strong>Metri Quadrati:</strong> {square_meters}
+            </p>
             <div className="flex items-center mt-2">
               <button
-                className={`text-red-500 hover:text-red-700 bg-white p-2 rounded-full transition-transform duration-500 ease-in-out ${animate ? "transform scale-110 bg-red-200" : ""
-                  }`}
+                className={`text-red-500 hover:text-red-700 bg-white p-2 rounded-full transition-transform duration-500 ease-in-out ${
+                  animate ? "transform scale-110 bg-red-200" : ""
+                }`}
                 onClick={likeHandler}
               >
                 {animate ? (
@@ -189,21 +219,38 @@ const CardDetails = ({ bnbId }) => {
       <div className="mx-4 md:mx-20 mt-10">
         <h3 className="text-2xl font-bold mb-4">Servizi Offerti:</h3>
         <ul className="list-none flex flex-wrap">
-          {services.filter(service => service.available).map((service, index) => (
-            <li key={index} className="flex items-center mb-2 mr-4">
-              <span className="text-green-400 mr-2"><i className="fa-solid fa-check"></i></span>
-              <span className="ml-2">{service.name}</span>
-            </li>
-          ))}
+          {services
+            .filter((service) => service.available)
+            .map((service, index) => (
+              <li key={index} className="flex items-center mb-2 mr-4">
+                <span className="text-green-400 mr-2">
+                  <i className="fa-solid fa-check"></i>
+                </span>
+                <span className="ml-2">{service.name}</span>
+              </li>
+            ))}
         </ul>
-        <h3 className="text-2xl font-bold mt-6">Prezzo: {price ? `${price} € a notte` : "Non disponibile"}</h3>
+        <h3 className="text-2xl font-bold mt-6">
+          Prezzo: {price ? `${price} € a notte` : "Non disponibile"}
+        </h3>
       </div>
       <div className="mx-4 md:mx-20 mt-10 p-4 border-t border-gray-300">
         <h3 className="text-2xl font-bold mb-4">Dati dell'Host:</h3>
-        <p className="text-gray-700 mb-2"><strong>Nome e cognome</strong> {host_name} {host_surname}</p>
-        <p className="text-gray-700 mb-2"><strong>Email:</strong><a href={`mailto:${host_email}?subject=Richiesta informazioni&body=Salve,%20vorrei%20maggiori%20info%20sulla%20casa%20inserita%20su%20BoolBnb.`} className="underline text-sky-500 ms-2">{host_email}</a>
+        <p className="text-gray-700 mb-2">
+          <strong>Nome e cognome</strong> {host_name} {host_surname}
         </p>
-        <p className="text-gray-700 mb-2"><strong>Telefono:</strong> {host_phone}</p>
+        <p className="text-gray-700 mb-2">
+          <strong>Email:</strong>
+          <a
+            href={`mailto:${host_email}?subject=Richiesta informazioni&body=Salve,%20vorrei%20maggiori%20info%20sulla%20casa%20inserita%20su%20BoolBnb.`}
+            className="underline text-sky-500 ms-2"
+          >
+            {host_email}
+          </a>
+        </p>
+        <p className="text-gray-700 mb-2">
+          <strong>Telefono:</strong> {host_phone}
+        </p>
       </div>
       <div className="mx-4 md:mx-20 mt-10">
         <div className="flex items-center justify-between mb-3">
@@ -232,54 +279,84 @@ const CardDetails = ({ bnbId }) => {
           <div className="bg-white p-5 rounded shadow-lg w-1/3">
             <h2 className="text-xl mb-4">Aggiungi una recensione</h2>
             <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Nome"
-                onChange={handleInputChange}
-                required
-                className="border rounded p-2 mb-2 w-full"
-              />
-              <input
-                type="text"
-                name="surname"
-                placeholder="Cognome"
-                onChange={handleInputChange}
-                required
-                className="border rounded p-2 mb-2 w-full"
-              />
-              <input
-                type="number"
-                name="vote"
-                placeholder="Voto"
-                onChange={handleInputChange}
-                required
-                className="border rounded p-2 mb-2 w-full"
-              />
-              <textarea
-                name="text"
-                placeholder="Scrivi una recensione"
-                onChange={handleInputChange}
-                required
-                className="border rounded p-2 mb-2 w-full"
-              ></textarea>
-              <input
-                type="date"
-                name="check_in_date"
-                onChange={handleInputChange}
-                required
-                className="border rounded p-2 mb-2 w-full"
-              />
-              <input
-                type="number"
-                name="stay_duration"
-                placeholder="Quanti giorni hai alloggiato?"
-                onChange={handleInputChange}
-                required
-                className="border rounded p-2 mb-2 w-full"
-              />
+              <div className="relative mb-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder=" "
+                  onChange={handleInputChange}
+                  required
+                  className="peer border rounded p-2 w-full focus:outline-none"
+                />
+                <label className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                  Nome
+                </label>
+              </div>
+              <div className="relative mb-4">
+                <input
+                  type="text"
+                  name="surname"
+                  placeholder=" "
+                  onChange={handleInputChange}
+                  required
+                  className="peer border rounded p-2 w-full focus:outline-none"
+                />
+                <label className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                  Cognome
+                </label>
+              </div>
+              <div className="relative mb-4">
+                <input
+                  type="number"
+                  name="vote"
+                  placeholder=" "
+                  onChange={handleInputChange}
+                  required
+                  className="peer border rounded p-2 w-full focus:outline-none"
+                />
+                <label className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                  Voto
+                </label>
+              </div>
+              <div className="relative mb-4">
+                <textarea
+                  name="text"
+                  placeholder=" "
+                  onChange={handleInputChange}
+                  required
+                  className="peer border rounded p-2 w-full focus:outline-none"
+                ></textarea>
+                <label className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                  Scrivi una recensione
+                </label>
+              </div>
+              <div className="relative mb-4">
+                <input
+                  type="date"
+                  name="check_in_date"
+                  placeholder=" "
+                  onChange={handleInputChange}
+                  required
+                  className="peer border rounded p-2 w-full focus:outline-none"
+                />
+                <label className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                  Data di check-in
+                </label>
+              </div>
+              <div className="relative mb-4">
+                <input
+                  type="number"
+                  name="stay_duration"
+                  placeholder=" "
+                  onChange={handleInputChange}
+                  required
+                  className="peer border rounded p-2 w-full focus:outline-none"
+                />
+                <label className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                  Quanti giorni hai alloggiato?
+                </label>
+              </div>
               <div className="flex justify-center">
-
                 <button
                   type="submit"
                   className="bg-yellow-500 text-white p-2 rounded mt-2 mx-2"
