@@ -25,7 +25,7 @@ const GlobalProvider = ({ children }) => {
     axios
       .get(api_url)
       .then((res) => {
-        setBestbnb(res.data.data.slice(0, 6));
+        setBestbnb(res.data.data.slice(0, 8));
         // Prende solo i primi 6 risultati
       })
       .catch((error) => console.error("Errore nel fetch:", error));
