@@ -240,19 +240,22 @@ const CardDetails = ({ bnbId }) => {
                 required
                 className="border rounded p-2 mb-2 w-full"
               />
-              <button
-                type="submit"
-                className="bg-yellow-500 text-white p-2 rounded mx-2"
-              >
-                Pubblica
-              </button>
-              <button
-                type="button"
-                onClick={() => setIsModalOpen(false)}
-                className="bg-red-500 text-white p-2 rounded mt-2"
-              >
-                Chiudi
-              </button>
+              <div className="flex justify-center">
+
+                <button
+                  type="submit"
+                  className="bg-yellow-500 text-white p-2 rounded mt-2 mx-2"
+                >
+                  Pubblica
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="bg-red-500 text-white p-2 rounded mt-2"
+                >
+                  x
+                </button>
+              </div>
             </form>
           </div>
         </div>
