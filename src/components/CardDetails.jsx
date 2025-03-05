@@ -97,7 +97,7 @@ const CardDetails = ({ bnbId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${api_Url}/homes/${id}/reviews`, reviewData)
+      .post(`${api_Url}/${id}/reviews`, reviewData)
       .then((response) => {
         console.log(response.data);
         setIsModalOpen(false);
