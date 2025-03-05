@@ -180,9 +180,8 @@ const CardDetails = ({ bnbId }) => {
             </p>
             <div className="flex items-center mt-2">
               <button
-                className={`text-red-500 hover:text-red-700 bg-white p-2 rounded-full transition-transform duration-500 ease-in-out ${
-                  animate ? "transform scale-110 bg-red-200" : ""
-                }`}
+                className={`text-red-500 hover:text-red-700 bg-white p-2 rounded-full transition-transform duration-500 ease-in-out ${animate ? "transform scale-110 bg-red-200" : ""
+                  }`}
                 onClick={likeHandler}
               >
                 {animate ? (
@@ -359,14 +358,14 @@ const CardDetails = ({ bnbId }) => {
               <div className="flex justify-center">
                 <button
                   type="submit"
-                  className="bg-yellow-500 text-white p-2 rounded mt-2 mx-2"
+                  className="bg-yellow-500 text-stone-600 border-stone-400 p-2 rounded-xl mt-2 mx-2"
                 >
                   Pubblica
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="bg-red-500 text-white p-2 rounded mt-2"
+                  className="bg-red-500 text-stone-600 border-stone-400 p-2 rounded-xl mt-2"
                 >
                   Chiudi
                 </button>
