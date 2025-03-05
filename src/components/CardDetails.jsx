@@ -3,6 +3,7 @@ import ReviewCard from "./ReviewCard";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useGlobalContext } from "../context/GlobalContext";
 
 const ImageSlider = ({ thumbnail, foto1, foto2 }) => {
   const allImages = [thumbnail, foto1, foto2].filter(Boolean);
@@ -118,6 +119,14 @@ const CardDetails = ({ bnbId }) => {
     { name: "Asciugacapelli", available: hairdryer },
     { name: "Ferro da stiro", available: iron },
   ];
+  const { fetchLikes } = useGlobalContext();
+  const [animate, setAnimate] = useState(false);
+
+  const likeHandler = () => {
+    fetchLikes(id);
+    setAnimate(true);
+    setTimeout(() => setAnimate(false), 500); // Remove the animation className after the animation ends
+  };
 
   return (
     <div className="relative">
@@ -141,8 +150,36 @@ const CardDetails = ({ bnbId }) => {
             <p className="text-gray-700 mb-2"><strong>Bagni:</strong> {restrooms}</p>
             <p className="text-gray-700 mb-2"><strong>Metri Quadrati:</strong> {square_meters}</p>
             <div className="flex items-center mt-2">
-              <button className="px-2 py-1 border-stone-400 rounded-xl cursor-pointer">
-                ❤️
+              <button
+                className={`text-red-500 hover:text-red-700 bg-white p-2 rounded-full transition-transform duration-500 ease-in-out ${animate ? "transform scale-110 bg-red-200" : ""
+                  }`}
+                onClick={likeHandler}
+              >
+                {animate ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="size-6"
+                  >
+                    <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                    />
+                  </svg>
+                )}
               </button>
               <span className="ml-2 text-gray-700">{likes}</span>
             </div>
@@ -163,10 +200,10 @@ const CardDetails = ({ bnbId }) => {
       </div>
       <div className="mx-4 md:mx-20 mt-10 p-4 border-t border-gray-300">
         <h3 className="text-2xl font-bold mb-4">Dati dell'Host:</h3>
-        <p className="text-gray-700 mb-2"><strong>Host:</strong> {host_name} {host_surname}</p>
-        <p className="text-gray-700 mb-2"><strong>Email Host:</strong><a href={`mailto:${host_email}?subject=Richiesta informazioni&body=Salve,%20vorrei%20maggiori%20info%20sulla%20casa%20inserita%20su%20BoolBnb.`} className="underline text-sky-500 ms-2">{host_email}</a>
+        <p className="text-gray-700 mb-2"><strong>Nome e cognome</strong> {host_name} {host_surname}</p>
+        <p className="text-gray-700 mb-2"><strong>Email:</strong><a href={`mailto:${host_email}?subject=Richiesta informazioni&body=Salve,%20vorrei%20maggiori%20info%20sulla%20casa%20inserita%20su%20BoolBnb.`} className="underline text-sky-500 ms-2">{host_email}</a>
         </p>
-        <p className="text-gray-700 mb-2"><strong>Telefono Host:</strong> {host_phone}</p>
+        <p className="text-gray-700 mb-2"><strong>Telefono:</strong> {host_phone}</p>
       </div>
       <div className="mx-4 md:mx-20 mt-10">
         <div className="flex items-center justify-between mb-3">
