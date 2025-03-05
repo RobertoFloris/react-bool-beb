@@ -164,7 +164,9 @@ const CardDetails = ({ bnbId }) => {
       <div className="mx-4 md:mx-20 mt-10 p-4 border-t border-gray-300">
         <h3 className="text-2xl font-bold mb-4">Dati dell'Host:</h3>
         <p className="text-gray-700 mb-2"><strong>Host:</strong> {host_name} {host_surname}</p>
-        <p className="text-gray-700 mb-2"><strong>Email Host:</strong> {host_email}</p>
+        <a href={`mailto:[${host_email}]`} className="text-gray-700 mb-2">
+          <strong>Email:</strong> {host_email}
+        </a>
         <p className="text-gray-700 mb-2"><strong>Telefono Host:</strong> {host_phone}</p>
       </div>
       <div className="mx-4 md:mx-20 mt-10">
