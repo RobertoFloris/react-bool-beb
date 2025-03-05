@@ -115,7 +115,7 @@ const AddHome = () => {
         </h1>
 
         <div className="mb-4">
-          <label>Quale di queste opzioni descrive meglio il tuo alloggio?</label>
+          <label>Quale di queste opzioni descrive meglio il tuo alloggio? *</label>
           <select
             name="type"
             className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -129,7 +129,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>A che tipo di alloggio avranno accesso gli ospiti?</label>
+          <label>A che tipo di alloggio avranno accesso gli ospiti? *</label>
           <select
             name="accomodation_type"
             className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -143,7 +143,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>In quale città si trova il tuo alloggio?</label>
+          <label>In quale città si trova il tuo alloggio? *</label>
           <input
             type="text"
             name="city"
@@ -153,7 +153,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Numero massimo di ospiti</label>
+          <label>Numero massimo di ospiti *</label>
           <input
             type="number"
             name="guest_number"
@@ -163,7 +163,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Numero di camere da letto</label>
+          <label>Numero di camere da letto *</label>
           <input
             type="number"
             name="rooms"
@@ -174,7 +174,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Numero di letti</label>
+          <label>Numero di letti *</label>
           <input
             type="number"
             name="beds"
@@ -185,7 +185,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Numero di bagni</label>
+          <label>Numero di bagni *</label>
           <input
             type="number"
             name="restrooms"
@@ -196,7 +196,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Metri quadri</label>
+          <label>Metri quadri *</label>
           <input
             type="number"
             name="square_meters"
@@ -207,7 +207,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Prezzo a notte</label>
+          <label>Prezzo a notte *</label>
           <input
             type="number"
             name="price"
@@ -217,7 +217,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Indirizzo</label>
+          <label>Indirizzo *</label>
           <input
             type="text"
             name="address"
@@ -227,7 +227,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Immagine di copertina</label>
+          <label>Immagine di copertina *</label>
           <input
             type="file"
             name="thumbnail"
@@ -238,7 +238,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Immagine 1</label>
+          <label>Foto facoltativa</label>
           <input
             type="file"
             name="foto1"
@@ -249,7 +249,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Immagine 2</label>
+          <label>Foto facoltativa</label>
           <input
             type="file"
             name="foto2"
@@ -260,7 +260,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Descrizione</label>
+          <label>Descrizione *</label>
           <textarea
             name="description"
             rows="4"
@@ -313,7 +313,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Nome Host</label>
+          <label>Nome Host *</label>
           <input
             type="text"
             name="host_name"
@@ -323,7 +323,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Cognome Host</label>
+          <label>Cognome Host *</label>
           <input
             type="text"
             name="host_surname"
@@ -333,7 +333,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Email Host</label>
+          <label>Email Host *</label>
           <input
             type="email"
             name="host_email"
@@ -343,7 +343,7 @@ const AddHome = () => {
         </div>
 
         <div className="mb-4">
-          <label>Telefono Host</label>
+          <label>Telefono Host *</label>
           <input
             type="text"
             name="host_phone"
