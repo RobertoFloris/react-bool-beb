@@ -242,7 +242,7 @@ const CardDetails = ({ bnbId }) => {
               />
               <button
                 type="submit"
-                className="bg-blue-500 text-white p-2 rounded mx-2"
+                className="bg-yellow-500 text-white p-2 rounded mx-2"
               >
                 Pubblica
               </button>
